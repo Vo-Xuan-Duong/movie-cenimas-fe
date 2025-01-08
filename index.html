@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/home.css">
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/jquery.js"></script>
+
+</head>
+
+<body>
+    <!-- <div id="header"></div>
+    <script> $(function () { $("#header").load("header.html"); }); </script> -->
+    <header>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Fixed top</a>
+                <div>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" href="#">Lịch
+                                chiếu</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Phim chiếu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Review phim</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" href="#">Blog
+                                phim</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <div style="display: none;" class="dropdown">
+                    <label style="cursor: pointer;" class="dropdown-toggle" data-bs-toggle="dropdown">
+                        <img style="width: 40px;height: 40px;border-radius: 50px;" src="/img/logo.png" alt="">
+                        <span class="dropdown-toggle" style="color: aliceblue;">xuan duong</span>
+                    </label>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                    </ul>
+                </div>
+                <div>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">Đăng nhập</button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#register">Đăng ký</button>
+                </div>
+            </div>
+        </nav>  
+    </header>
+    <main>
+        <div class="main_header" style="background-image: url('/img/background_cienmas.jpg')">
+            <div class="container pt-5">
+                <h2 class="text-center mb-4 mt-4" margin-top: 50px;>
+                    Phim đang chiếu
+                </h2>
+                <div class="list-show-movie">
+                    <button id="scroll-left" type="button" class="btn-scroll-prev-btn"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <div class="list-show">
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+
+
+                    </div>
+                    <button id="scroll-right" type="button" class="btn-scroll-next-btn"><i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="main_content">
+            <div class="container pt-5">
+                <h2 class="text-center mb-4 mt-4" margin-top: 50px;>
+                    Phim đang chiếu
+                </h2>
+                <div class="list-show-movie ">
+                    <button id="scroll-left" type="button" class="btn-scroll-prev-btn"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <div class="list-show">
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thú</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thú</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thú</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thú</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thú</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thú</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thú</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">K</span>
+                            <img alt="Poster of Woodwalkers movie"
+                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="name-movie">Người Hóa Thú</h6>
+                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                        </div>
+                        <div class="movie-card">
+                            <span class="age-rating">18+</span>
+                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                            <i class="fas fa-play-circle play-icon"></i>
+                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                            <p class="rating"><i class="fas fa-star"></i>9</p>
+                        </div>
+                    </div>
+                    <button id="scroll-right" type="button" class="btn-scroll-next-btn"><i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+        <div class="main_footer">
+            <div class="container pt-5">
+                <div class="search-movie">
+                    <h3>
+                        Tìm phim trên rạp
+                    </h3>
+                    <div class="filter-menu">
+                        <!-- Dropdown Thể loại -->
+                        <div class="dropdown">
+                            <button class="btn btn-menu-search dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Thể loại
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-3" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Tất cả</a>
+                                <a class="dropdown-item" href="#">Phim truyền hình</a>
+                                <a class="dropdown-item" href="#">Bí ẩn</a>
+                                <a class="dropdown-item" href="#">Gay cấn</a>
+                                <a class="dropdown-item" href="#">Hành động</a>
+                                <a class="dropdown-item" href="#">Hoạt hình</a>
+                                <a class="dropdown-item" href="#">Lãng mạn</a>
+                                <a class="dropdown-item" href="#">Thảm họa</a>
+                                <a class="dropdown-item" href="#">Thể thao</a>
+                                <a class="dropdown-item" href="#">Drama</a>
+                                <a class="dropdown-item" href="#">Cổ trang</a>
+                                <a class="dropdown-item" href="#">Kiếm hiệp</a>
+                                <a class="dropdown-item" href="#">Vòng lặp</a>
+                                <a class="dropdown-item" href="#">Viễn Tây</a>
+                                <a class="dropdown-item" href="#">Hồi hộp</a>
+                                <a class="dropdown-item" href="#">Thần thoại</a>
+                                <a class="dropdown-item" href="#">Chiến tranh</a>
+                                <a class="dropdown-item" href="#">Gia đình</a>
+                                <a class="dropdown-item" href="#">Hình sự</a>
+                                <a class="dropdown-item" href="#">Khoa học - Viễn tưởng</a>
+                                <a class="dropdown-item" href="#">Lịch sử</a>
+                                <a class="dropdown-item" href="#">Tình cảm</a>
+                                <a class="dropdown-item" href="#">Võ thuật</a>
+                                <a class="dropdown-item" href="#">Âm nhạc</a>
+                                <a class="dropdown-item" href="#">Tâm lý</a>
+                                <a class="dropdown-item" href="#">Anime</a>
+                                <a class="dropdown-item" href="#">Siêu trộm</a>
+                                <a class="dropdown-item" href="#">Giả tưởng</a>
+                                <a class="dropdown-item" href="#">Hài</a>
+                                <a class="dropdown-item" href="#">Phiêu lưu</a>
+                                <a class="dropdown-item" href="#">Kinh dị</a>
+                                <a class="dropdown-item" href="#">Tài liệu</a>
+                                <a class="dropdown-item" href="#">Tội phạm</a>
+                                <a class="dropdown-item" href="#">Giật gân</a>
+                                <a class="dropdown-item" href="#">Ma</a>
+                                <a class="dropdown-item" href="#">Trinh thám</a>
+                                <a class="dropdown-item" href="#">Hack Não</a>
+                                <a class="dropdown-item" href="#">Siêu anh hùng</a>
+                            </div>
+                        </div>
+                        <!-- Dropdown Quốc gia -->
+                        <div class="dropdown">
+                            <button class="btn btn-menu-search dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Quốc gia
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-3" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Tất cả</a>
+                                <a class="dropdown-item" href="#">Phim truyền hình</a>
+                                <a class="dropdown-item" href="#">Bí ẩn</a>
+                                <a class="dropdown-item" href="#">Gay cấn</a>
+                                <a class="dropdown-item" href="#">Hành động</a>
+                                <a class="dropdown-item" href="#">Hoạt hình</a>
+                                <a class="dropdown-item" href="#">Lãng mạn</a>
+                                <a class="dropdown-item" href="#">Thảm họa</a>
+                                <a class="dropdown-item" href="#">Thể thao</a>
+                                <a class="dropdown-item" href="#">Drama</a>
+                                <a class="dropdown-item" href="#">Cổ trang</a>
+                                <a class="dropdown-item" href="#">Kiếm hiệp</a>
+                                <a class="dropdown-item" href="#">Vòng lặp</a>
+                                <a class="dropdown-item" href="#">Viễn Tây</a>
+                                <a class="dropdown-item" href="#">Hồi hộp</a>
+                                <a class="dropdown-item" href="#">Thần thoại</a>
+                                <a class="dropdown-item" href="#">Chiến tranh</a>
+                                <a class="dropdown-item" href="#">Gia đình</a>
+                                <a class="dropdown-item" href="#">Hình sự</a>
+                                <a class="dropdown-item" href="#">Khoa học - Viễn tưởng</a>
+                                <a class="dropdown-item" href="#">Lịch sử</a>
+                                <a class="dropdown-item" href="#">Tình cảm</a>
+                                <a class="dropdown-item" href="#">Võ thuật</a>
+                                <a class="dropdown-item" href="#">Âm nhạc</a>
+                                <a class="dropdown-item" href="#">Tâm lý</a>
+                                <a class="dropdown-item" href="#">Anime</a>
+                                <a class="dropdown-item" href="#">Siêu trộm</a>
+                                <a class="dropdown-item" href="#">Giả tưởng</a>
+                                <a class="dropdown-item" href="#">Hài</a>
+                                <a class="dropdown-item" href="#">Phiêu lưu</a>
+                                <a class="dropdown-item" href="#">Kinh dị</a>
+                                <a class="dropdown-item" href="#">Tài liệu</a>
+                                <a class="dropdown-item" href="#">Tội phạm</a>
+                                <a class="dropdown-item" href="#">Giật gân</a>
+                                <a class="dropdown-item" href="#">Ma</a>
+                                <a class="dropdown-item" href="#">Trinh thám</a>
+                                <a class="dropdown-item" href="#">Hack Não</a>
+                                <a class="dropdown-item" href="#">Siêu anh hùng</a>
+                            </div>
+                        </div>
+                        <!-- Dropdown Năm -->
+                        <div class="dropdown">
+                            <button class="btn btn-menu-search dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Năm
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-3" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="#">Tất cả</a>
+                                <a class="dropdown-item" href="#">Phim truyền hình</a>
+                                <a class="dropdown-item" href="#">Bí ẩn</a>
+                                <a class="dropdown-item" href="#">Gay cấn</a>
+                                <a class="dropdown-item" href="#">Hành động</a>
+                                <a class="dropdown-item" href="#">Hoạt hình</a>
+                                <a class="dropdown-item" href="#">Lãng mạn</a>
+                                <a class="dropdown-item" href="#">Thảm họa</a>
+                                <a class="dropdown-item" href="#">Thể thao</a>
+                                <a class="dropdown-item" href="#">Drama</a>
+                                <a class="dropdown-item" href="#">Cổ trang</a>
+                                <a class="dropdown-item" href="#">Kiếm hiệp</a>
+                                <a class="dropdown-item" href="#">Vòng lặp</a>
+                                <a class="dropdown-item" href="#">Viễn Tây</a>
+                                <a class="dropdown-item" href="#">Hồi hộp</a>
+                                <a class="dropdown-item" href="#">Thần thoại</a>
+                                <a class="dropdown-item" href="#">Chiến tranh</a>
+                                <a class="dropdown-item" href="#">Gia đình</a>
+                                <a class="dropdown-item" href="#">Hình sự</a>
+                                <a class="dropdown-item" href="#">Khoa học - Viễn tưởng</a>
+                                <a class="dropdown-item" href="#">Lịch sử</a>
+                                <a class="dropdown-item" href="#">Tình cảm</a>
+                                <a class="dropdown-item" href="#">Võ thuật</a>
+                                <a class="dropdown-item" href="#">Âm nhạc</a>
+                                <a class="dropdown-item" href="#">Tâm lý</a>
+                                <a class="dropdown-item" href="#">Anime</a>
+                                <a class="dropdown-item" href="#">Siêu trộm</a>
+                                <a class="dropdown-item" href="#">Giả tưởng</a>
+                                <a class="dropdown-item" href="#">Hài</a>
+                                <a class="dropdown-item" href="#">Phiêu lưu</a>
+                                <a class="dropdown-item" href="#">Kinh dị</a>
+                                <a class="dropdown-item" href="#">Tài liệu</a>
+                                <a class="dropdown-item" href="#">Tội phạm</a>
+                                <a class="dropdown-item" href="#">Giật gân</a>
+                                <a class="dropdown-item" href="#">Ma</a>
+                                <a class="dropdown-item" href="#">Trinh thám</a>
+                                <a class="dropdown-item" href="#">Hack Não</a>
+                                <a class="dropdown-item" href="#">Siêu anh hùng</a>
+                            </div>
+                        </div>
+
+                        <!-- Search box -->
+                        <div class="search-box">
+                            <input type="text" placeholder="Tìm theo tên phim ..."><label for=""><i
+                                    class="fa-solid fa-magnifying-glass fa-lg" style="color: #000000;"></i></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-movie-search">
+                    <div class="movie-card">
+                        <span class="age-rating">K</span>
+                        <img alt="Poster of Woodwalkers movie"
+                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="name-movie">Người Hóa Thú</h6>
+                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">18+</span>
+                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">K</span>
+                        <img alt="Poster of Woodwalkers movie"
+                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="name-movie">Người Hóa Thú</h6>
+                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">18+</span>
+                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">K</span>
+                        <img alt="Poster of Woodwalkers movie"
+                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="name-movie">Người Hóa Thú</h6>
+                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">18+</span>
+                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">K</span>
+                        <img alt="Poster of Woodwalkers movie"
+                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="name-movie">Người Hóa Thú</h6>
+                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">18+</span>
+                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">K</span>
+                        <img alt="Poster of Woodwalkers movie"
+                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="name-movie">Người Hóa Thú</h6>
+                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">18+</span>
+                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">K</span>
+                        <img alt="Poster of Woodwalkers movie"
+                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="name-movie">Người Hóa Thú</h6>
+                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">18+</span>
+                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">K</span>
+                        <img alt="Poster of Woodwalkers movie"
+                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="name-movie">Người Hóa Thú</h6>
+                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">18+</span>
+                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">K</span>
+                        <img alt="Poster of Woodwalkers movie"
+                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="name-movie">Người Hóa Thú</h6>
+                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">18+</span>
+                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">K</span>
+                        <img alt="Poster of Woodwalkers movie"
+                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="name-movie">Người Hóa Thú</h6>
+                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">18+</span>
+                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">K</span>
+                        <img alt="Poster of Woodwalkers movie"
+                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="name-movie">Người Hóa Thú</h6>
+                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">18+</span>
+                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">K</span>
+                        <img alt="Poster of Woodwalkers movie"
+                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="name-movie">Người Hóa Thú</h6>
+                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                    </div>
+                    <div class="movie-card">
+                        <span class="age-rating">18+</span>
+                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
+                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
+                        <i class="fas fa-play-circle play-icon"></i>
+                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
+                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-content-1">
+                    <h3>Chăm sóc khách hàng</h3>
+                    <div class="link-connect">
+                        <p>Địa chỉ: 180 Cao Lỗ, Phường 4, Quận 8, TP.HCM</p>
+                        <p>Điện thoại: 1900 1000</p>
+                        <p>Email:
+                            <a href="mailto: duongvo.261104@gmail.com" style="color: #ffffff;">
+                                duongvo.261104@gmail.com
+                            </a>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="footer-content-2">
+                    <h3>Mua vé xem phim</h3>
+                    <div class="link-connect">
+                        <a href="#">Lịch chiếu phim</a>
+                        <a href="#">Rạp chiếu phim</a>
+                        <a href="#">Phim chiếu rạp</a>
+                        <a href="#">Review phim</a>
+                        <a href="#">Blog phim</a>
+                    </div>
+                </div>
+                <div class="footer-content-3">
+                    <h3>Chính sách</h3>
+                    <div class="link-connect">
+                        <a href="#">Chính sách bảo mật</a>
+                        <a href="#">Chính sách thanh toán</a>
+                        <a href="#">Chính sách vé</a>
+                        <a href="#">Chính sách đổi trả</a>
+                        <a href="#">Chính sách bảo hành</a>
+                    </div>
+
+                </div>
+                <div class="footer-content-4">
+                    <h3>Liên kết</h3>
+                    <div class="link-lh">
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f" style="color: azure;"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram" style="color: azure;"></i></a>
+                        <a href="https://www.youtube.com/"><i class="fab fa-youtube" style="color: azure;"></i></a>
+                        <a href="https://www.twitter.com/"><i class="fab fa-twitter" style="color: azure;"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Modal - redister -->
+    <div class="modal fade" id="register" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content px-3">
+                <div class="modal-header mx-auto">
+                    <h5 class="modal-title" id="serviceModalLabel">Đăng ký</h5>
+                </div>
+                <div class="modal-body col-12 ">
+                    <form id="serviceForm" action="/admin/service_management/save" method="post"
+                        modelAttribute="newService" enctype="multipart/form-data">
+                        <!-- <input type="hidden" id="serviceId" name="id" /> -->
+                        <div class="mb-3 ">
+                            <label for="username" class="form-label">Họ Tên</label>
+                            <input type="text" class="form-control" id="username" name="usernam" />
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-12 col-md-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" />
+                            </div>
+                            <div class="col-12 col-md-6">
+                                <label for="phone" class="form-label">Số điện thoại</label>
+                                <input type="phone" class="form-control" id="servicePrice" name="phone" />
+                            </div>
+                        </div>
+                        <div class="mb-3 ">
+                            <label for="password" class="form-label">Mật khẩu</label>
+                            <input type="text" class="form-control" id="password" name="password" />
+                        </div>
+                        <div class="mb-3 ">
+                            <label for="confirmPassword" class="form-label">Xác nhận Mật khẩu</label>
+                            <input type="text" class="form-control" id="confirmPassword" name="confirmPassword" />
+                        </div>
+
+                        <button class="btn btn-register">Đăng ký</button>
+
+                        <div class="mt-3">
+                            <p>Bạn đã có tài khoản?<a href="">Đăng nhập?</a></p>
+                        </div>
+                        <!-- <div class="modal-footer">
+                            <button>Đăng ký</button>
+                        </div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal - login-->
+    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content p-3">
+                <div class="modal-header mx-auto">
+                    <h5 class="modal-title" id="serviceModalLabel">Đăng nhập</h5>
+                </div>
+                <div class="modal-body col-12 ">
+                    <form id="serviceForm" action="/admin/service_management/save" method="post"
+                        modelAttribute="newService" enctype="multipart/form-data">
+                        <!-- <input type="hidden" id="serviceId" name="id" /> -->
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" />
+                        </div>
+                        <div class="mb-3 ">
+                            <label for="password" class="form-label">Mật khẩu</label>
+                            <input type="text" class="form-control" id="password" name="password" />
+                        </div>
+                        <div class="mb-3">
+                            <input type="checkbox" id="remember" name="remember">
+                            <label for="remember">Ghi nhớ đăng nhập</label>
+                        </div>
+                        <div class="mt-3">
+                            <p>Bạn chưa có tài khoản?<a href="">Đăng ký?</a></p>
+                        </div>
+                        <button class="btn btn-register">Đăng nhập</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="/js/home.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+</html>
