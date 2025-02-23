@@ -8,10 +8,10 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/home.css">
-    <link rel="stylesheet" href="/css/description-movie.css">
+    <link rel="stylesheet" href="/css/movie-detail.css">
     <script src="/js/bootstrap.js"></script>
     <script src="/js/jquery.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <header>
         <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
             <div class="container">
-                <a class="navbar-brand" href="#">Fixed top</a>
+                <a class="navbar-brand" href="index.html">Fixed top</a>
                 <div>
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -31,12 +31,7 @@
                                 <li class="dropdown-item">123</li>
                                 <li class="dropdown-item">123</li>
                                 <li class="dropdown-item">123</li>
-                                <li class="dropdown-item">123</li>
-                                <li class="dropdown-item">123</li>
-                                <li class="dropdown-item">123</li>
-                                <li class="dropdown-item">123</li>
-                                <li class="dropdown-item">123</li>
-                                <li class="dropdown-item">123</li>
+
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -53,12 +48,7 @@
                                 <li class="dropdown-item">123</li>
                                 <li class="dropdown-item">123</li>
                                 <li class="dropdown-item">123</li>
-                                <li class="dropdown-item">123</li>
-                                <li class="dropdown-item">123</li>
-                                <li class="dropdown-item">123</li>
-                                <li class="dropdown-item">123</li>
-                                <li class="dropdown-item">123</li>
-                                <li class="dropdown-item">123</li>
+
                             </ul>
                         </li>
 
@@ -74,12 +64,7 @@
                         <li class="dropdown-item">123</li>
                         <li class="dropdown-item">123</li>
                         <li class="dropdown-item">123</li>
-                        <li class="dropdown-item">123</li>
-                        <li class="dropdown-item">123</li>
-                        <li class="dropdown-item">123</li>
-                        <li class="dropdown-item">123</li>
-                        <li class="dropdown-item">123</li>
-                        <li class="dropdown-item">123</li>
+
                     </ul>
                 </div>
                 <div>
@@ -90,48 +75,34 @@
         </nav>
     </header>
     <main>
-        <div class="description-movie-header" style="background-image: url('/img/background_dreamscape.jpg');">
+        <div class="description-movie-header" style="background-color: black;">
             <div class="container col-12 pt-5 pb-5">
                 <div class="row">
-                    <div class="col-4 p-5">
+                    <div class="col-4 p-5 movie-poster">
                         <img class="description-movie-img" src="/img/dreamscape.jpg" alt="dreamscape" class="img-fluid">
                     </div>
-                    <div class="col-8 pt-5">
-                        <span class="age-rating">K</span>
-                        <h1>NCT DREAM Mystery Lab: DREAM( )SCAPE in Cinemas</h1>
-                        <p>NCT DREAM Mystery Lab: DREAM( )SCAPE in Cinemas
-                            ·
-                            <span>2025</span>
-                            ·
-                            <span>137 phút</span>
-                        </p>
+                    <div class="col-8 pt-5 container__description_movie">
+                        <span class="movie-rating">K</span>
+                        <h1 class="movie-title">NCT DREAM Mystery Lab: DREAM( )SCAPE in Cinemas</h1>
+
+                        <p class="movie-date">2025</p>
+                        <span class="movie-duration">137 </span>phút
                         <br>
+                        <br>
+
                         <div class="description-movie">
                             <p><b>Nội dung</b></p>
-                            <p>Tour diễn thứ 3 của NCT DREAM, ‘THE DREAM SHOW 3: DREAM( )SCAPE’ sẽ đến rạp 1 lần nữa,
-                                mang
-                                đến một thế giới sống động ngập tràn trong màu Pearl Neo Champagne. Tham gia vào cuộc
-                                phiêu
-                                lưu ẩn chứa câu chuyện của Phòng thí nghiệm bí ẩn dần được hé lộ - một phòng thí nghiệm
-                                đặc
-                                biệt nơi mà bí mật của sự trưởng thành được khám phá trên con đường tiến tới ước mơ của
-                                một
-                                người, và là nơi mà những đơn thuốc an ủi và chữa lành được chia sẻ. Được ghi hình tại
-                                Gocheok Sky Dome Seoul, nơi chứng kiến những màn trình diễn ngoạn mục tràn đầy năng
-                                lượng
-                                tuổi trẻ, thêm vào đó là những nỗ lực đầy đam mê đằng sau hậu trường. Đừng bỏ lỡ NCT
-                                DREAM
-                                Mystery Lab: DREAM( )SCAPE in Cinemas - một sân khấu cho việc trốn thoát vào giấc mơ và
-                                đón
-                                nhận những khởi đầu mới. <span>Thu gọn</span></p>
+                            <p class="description-movie-content"> </p>
                         </div>
                         <div class="info-movie">
-                            <p>Thể loại: <b><span>Tài liệu, Âm Nhạc</span></b></p>
-                            <p>Ngày chiếu: <b><span>08/01/2025</span></b></p>
+                            <p>Thể loại: <b><span class="movie-genre">Tài liệu, Âm Nhạc</span></b></p>
+                            <p>Ngày chiếu: <b><span class="movie-release-date">08/01/2025</span></b></p>
                         </div>
                         <div class="btn-trailer-reviews">
-                            <button class="btn-trailer-review">Xem trailer</button>
-                            <button class="btn-trailer-review">Xem review</button>
+                            <a href="#" class="btn-trailer-review btn-trailer"><i class="fas fa-play-circle"></i> Xem
+                                trailer</a>
+                            <a href="#" class="btn-trailer-review btn-review"><i class="fas fa-play-circle"></i> Xem
+                                review</a>
                         </div>
                     </div>
                 </div>
@@ -144,7 +115,8 @@
                         <div class="row col-12">
                             <div class="col-8">
                                 <h4><b>
-                                        Lịch chiếu <span> NCT DREAM Mystery Lab: DREAM( )SCAPE in Cinemas</span>
+                                        Lịch chiếu : <span class="movie-title-1"> NCT DREAM Mystery Lab: DREAM( )SCAPE
+                                            in Cinemas</span>
                                     </b></h4>
                             </div>
                             <div class="col-4 mt-4 row">
@@ -180,7 +152,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="show-schedule">
+                        <div class="show-schedule mt-4 mb-5">
                             <div class="date-selector">
                                 <button id="scroll-left" type="button" class="btn-date-selector-left"><i
                                         class="fas fa-chevron-left fa-lg"></i></button>
@@ -213,7 +185,7 @@
                                         <span class="day-big">14</span>
                                         <span class="day">Thứ 3</span>
                                     </div>
-                                    <div class="date-item active">
+                                    <div class="date-item">
                                         <span class="day-big">8</span>
                                         <span class="day">Thứ 4</span>
                                     </div>
@@ -272,18 +244,53 @@
                             <hr>
                             <div class="list-theaters">
                                 <div class="list-theater-item">
-                                    <div class="list-theater-item-main row">
-                                        <div class="theater-item-main-logo col-2">
-                                            <img src="/img/logo-rapchieuphim.avif" alt="logo">
+                                    <!-- <div class="list-theater-item-main">
+                                        <div class=" row">
+                                            <div class="theater-item-main-logo col-1">
+                                                <img src="/img/logo-rapchieuphim.avif" alt="logo">
+                                            </div>
+                                            <div class="theater-item-main-content col-9">
+                                                <p style="font-weight: 16px;margin-bottom: 0;">BHD Star Bitexco</p>
+                                                <p style="font-size: 12px; color: rgb(169, 169, 169);margin-bottom: 0;">
+                                                    2 Hai Trieu, District 1, Ho Chi Minh City <a
+                                                        href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8977453149246!2d105.83245751424809!3d21.036777085994046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135aba15ec15d17%3A0x620e85c2cfe14d4c!2zTMSDbmcgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2sus!4v1501056274257">[
+                                                        Bản đồ ]</a></p>
+                                            </div>
                                         </div>
-                                        <div class="theater-item-main-content col-9">
-                                            <p style="font-weight: 16px;">CGV Aeon Tân Bình </p>
-                                            <p style="font-size: 12px; color: rgb(169, 169, 169);">Tầng 3, Trung tâm thương mại Aeon Mall Bình Tân, Số 1 đường số 17A, khu phố 11, phườ12 thành phố hồ chí ,mị </p> <a href="#">[ Bản đồ ]</a>
+                                        <div class="showtime">
+                                            <div class="schedule">2D Phụ đề</div>
+                                            <div id="time_slot_showTime">
+                                                <div data-bs-toggle="modal" data-bs-target="#ticket" class="time-slot">
+                                                    <span class="highlight">14:30</span> ~ 16:25
+                                                </div>
+                                                <div data-bs-toggle="modal" data-bs-target="#ticket" class="time-slot">
+                                                    <span class="highlight">19:00</span> ~ 20:55
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="list-theater-item-detail">
-
-                                    </div>
+                                    <hr>
+                                    <div class="list-theater-item-main">
+                                        <div class=" row">
+                                            <div class="theater-item-main-logo col-1">
+                                                <img src="/img/logo-rapchieuphim.avif" alt="logo">
+                                            </div>
+                                            <div class="theater-item-main-content col-9">
+                                                <p style="font-weight: 16px;margin-bottom: 0;">Mega GS Cao Thang</p>
+                                                <p style="font-size: 12px; color: rgb(169, 169, 169);margin-bottom: 0;">
+                                                    19 Cao Thang, District 3, Ho Chi Minh City <a href="#">[ Bản đồ ]</a></p>
+                                            </div>
+                                        </div>
+                                        <div class="showtime">
+                                            <div class="schedule">2D Phụ đề</div>
+                                            <div data-bs-toggle="modal" data-bs-target="#ticket" class="time-slot">
+                                                <span class="highlight">14:30</span> ~ 16:25
+                                            </div>
+                                            <div data-bs-toggle="modal" data-bs-target="#ticket" class="time-slot">
+                                                <span class="highlight">19:00</span> ~ 20:55
+                                            </div>
+                                        </div>
+                                    </div> -->
                                 </div>
 
                             </div>
@@ -293,7 +300,7 @@
                         <h4>
                             <b>Phim đang chiếu</b>
                         </h4>
-                        <div class="list-movie pt-3">
+                        <div class="list-movie pt-3 " id="upcoming-movies">
                             <div class="movie-item row">
                                 <div class="col-3">
                                     <img class="movie-item-img" src="/img/dreamscape.jpg" alt="dreamscape"
@@ -311,90 +318,7 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="movie-item row">
-                                <div class="col-3">
-                                    <img class="movie-item-img" src="/img/dreamscape.jpg" alt="dreamscape"
-                                        class="img-fluid">
-                                </div>
-                                <div class="col-9">
-                                    <span class="movie-item-age-rating">K</span>
-                                    <p class="movie-title"><b>NCT DREAM Mystery Lab: DREAM( )SCAPE in Cinemas</b>
-                                    </p>
-                                    <p class="movie-genre">Tài liệu, Âm Nhạc</p>
-                                    <div class="movie-rating">
-                                        <span>⭐</span>
-                                        <span>9.3</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="movie-item row">
-                                <div class="col-3">
-                                    <img class="movie-item-img" src="/img/dreamscape.jpg" alt="dreamscape"
-                                        class="img-fluid">
-                                </div>
-                                <div class="col-9">
-                                    <span class="movie-item-age-rating">K</span>
-                                    <p class="movie-title"><b>NCT DREAM Mystery Lab: DREAM( )SCAPE in Cinemas</b>
-                                    </p>
-                                    <p class="movie-genre">Tài liệu, Âm Nhạc</p>
-                                    <div class="movie-rating">
-                                        <span>⭐</span>
-                                        <span>9.3</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="movie-item row">
-                                <div class="col-3">
-                                    <img class="movie-item-img" src="/img/dreamscape.jpg" alt="dreamscape"
-                                        class="img-fluid">
-                                </div>
-                                <div class="col-9">
-                                    <span class="movie-item-age-rating">K</span>
-                                    <p class="movie-title"><b>NCT DREAM Mystery Lab: DREAM( )SCAPE in Cinemas</b>
-                                    </p>
-                                    <p class="movie-genre">Tài liệu, Âm Nhạc</p>
-                                    <div class="movie-rating">
-                                        <span>⭐</span>
-                                        <span>9.3</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="movie-item row">
-                                <div class="col-3">
-                                    <img class="movie-item-img" src="/img/dreamscape.jpg" alt="dreamscape"
-                                        class="img-fluid">
-                                </div>
-                                <div class="col-9">
-                                    <span class="movie-item-age-rating">K</span>
-                                    <p class="movie-title"><b>NCT DREAM Mystery Lab: DREAM( )SCAPE in Cinemas</b>
-                                    </p>
-                                    <p class="movie-genre">Tài liệu, Âm Nhạc</p>
-                                    <div class="movie-rating">
-                                        <span>⭐</span>
-                                        <span>9.3</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="movie-item row">
-                                <div class="col-3">
-                                    <img class="movie-item-img" src="/img/dreamscape.jpg" alt="dreamscape"
-                                        class="img-fluid">
-                                </div>
-                                <div class="col-9">
-                                    <span class="movie-item-age-rating">K</span>
-                                    <p class="movie-title"><b>NCT DREAM Mystery Lab: DREAM( )SCAPE in Cinemas</b>
-                                    </p>
-                                    <p class="movie-genre">Tài liệu, Âm Nhạc</p>
-                                    <div class="movie-rating">
-                                        <span>⭐</span>
-                                        <span>9.3</span>
-                                    </div>
-                                </div>
-                            </div>
+
 
 
                         </div>
@@ -535,8 +459,58 @@
             </div>
         </div>
     </div>
+    <!-- Modal - ticket -->
+    <div class="modal fade" id="ticket" tabindex="-1" aria-labelledby="ticketModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content p-3" style="background-color: #1e1e1e; color: #ffffff;">
+                <div class="modal-header mx-auto">
+                    <h5 class="modal-title" id="ticketModalLabel" style="color: #e83e8c;">Mua vé xem phim</h5>
+                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button> -->
+                </div>
+                <div class="modal-body">
+                    <div class="screen">Màn hình</div>
+                    <div id="seat-map" class="d-flex flex-column align-items-center"></div>
+                    <div class="legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #343a40;"></div>Đã đặt
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #6f42c1;"></div>Ghế thường
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #dc3545;"></div>Ghế VIP
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background-color: #e83e8c;"></div>Ghế đôi
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="border: 2px solid #28a745;"></div>Vùng trung tâm
+                        </div>
+                    </div>
+                    <div class="mt-4 p-3 bg-light text-dark rounded">
+                        <p class="text-center">Nữ Tu Bóng Tối - 14:30 ~ 16:25 - Hôm nay, 21/02 - Phòng chiếu P7 - 2D Phụ
+                            đề
+                        </p>
+                        <h5>Chỗ ngồi:</h5>
+                        <p id="selected-seats">Chưa chọn ghế nào</p>
+                        <h5>Tạm tính:</h5>
+                        <p id="total-price">0đ</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-success">Xác nhận mua vé</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 <script src="/js/description-movie.js"></script>
+<script src="js/movie-detail.js"></script>
+<!-- <script src="js/home.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
 

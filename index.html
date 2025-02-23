@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" />
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/home.css">
     <script src="/js/bootstrap.js"></script>
     <script src="/js/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
 
@@ -86,323 +87,61 @@
                     <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#register">Đăng ký</button>
                 </div>
             </div>
-        </nav>  
+        </nav>
     </header>
     <main>
-        <div class="main_header" style="background-image: url('/img/background_cienmas.jpg')">
-            <div class="container pt-5">
+        <!-- phim đang chiếu -->
+        <div class="main_header " style="background-image: url('/img/background_cienmas.jpg')">
+            <div class="container pt-5 pb-5">
                 <h2 class="text-center mb-4 mt-4" margin-top: 50px;>
                     Phim đang chiếu
                 </h2>
                 <div class="list-show-movie">
                     <button id="scroll-left" type="button" class="btn-scroll-prev-btn"><i
                             class="fas fa-chevron-left"></i></button>
-                    <div class="list-show">
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
+                    <div class="list-show" id="now-showing-movies">
+                        <div class="movie-card" >
+                            <span class="movie-rating">K</span>
+                            <div class="movie-poster-img">
+                                <a href="">
+                                    <img alt="Poster of Woodwalkers movie"
                                 src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                                </a>
+                            </div>
+                            <h6 class="modal-title">Người Hóa Thú</h6>
+                            <p class="movie-genre">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10 &nbsp; <a class="trailer-button" href=""><i class="fas fa-play-circle play-icon"></i> Xem trailer</a></p>                         
                         </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thúaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Quỷ Môn Quan: Phong Ấn asfsdsdvsdvsdvsv</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-
-
                     </div>
                     <button id="scroll-right" type="button" class="btn-scroll-next-btn"><i
                             class="fas fa-chevron-right"></i></button>
                 </div>
             </div>
         </div>
+        <!-- phim sắp chiếu -->
         <div class="main_content">
             <div class="container pt-5">
                 <h2 class="text-center mb-4 mt-4" margin-top: 50px;>
-                    Phim đang chiếu
+                    Phim sắp chiếu
                 </h2>
                 <div class="list-show-movie ">
                     <button id="scroll-left" type="button" class="btn-scroll-prev-btn"><i
                             class="fas fa-chevron-left"></i></button>
-                    <div class="list-show">
+                    <div class="list-show" id="upcoming-movies">
                         <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
+                            <span class="movie-rating">K</span>
+                            <div class="movie-poster-img">
+                                <a href="">
+                                    <img alt="Poster of Woodwalkers movie"
                                 src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thú</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
+                                </a>
+                            </div>
+                            <h6 class="modal-title">Người Hóa Thú</h6>
+                            <p class="movie-genre">Giả Tưởng, Gia Đình</p>
+                            <a class="trailer-button" href=""><i class="fas fa-play-circle play-icon"></i> Xem trailer</a>
+                            
                         </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thú</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thú</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thú</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thú</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thú</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thú</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">K</span>
-                            <img alt="Poster of Woodwalkers movie"
-                                src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="name-movie">Người Hóa Thú</h6>
-                            <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                            <p class="rating"><i class="fas fa-star"></i>10</p>
-                        </div>
-                        <div class="movie-card">
-                            <span class="age-rating">18+</span>
-                            <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                                src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                            <i class="fas fa-play-circle play-icon"></i>
-                            <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                            <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                            <p class="rating"><i class="fas fa-star"></i>9</p>
-                        </div>
+                        
                     </div>
                     <button id="scroll-right" type="button" class="btn-scroll-next-btn"><i
                             class="fas fa-chevron-right"></i></button>
@@ -565,186 +304,31 @@
                         </div>
                     </div>
                 </div>
-                <div class="list-movie-search">
+                <div class="list-movie-search" id="list-movies">
                     <div class="movie-card">
                         <span class="age-rating">K</span>
-                        <img alt="Poster of Woodwalkers movie"
+                        <a class="movie-poster-img">
+                            <img alt="Poster of Woodwalkers movie"
                             src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="name-movie">Người Hóa Thú</h6>
-                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                        </a>
+                        <h6 class="movie-title">Người Hóa Thú</h6>
+                        <p class="movie-genre">Giả Tưởng, Gia Đình</p>
+                        <a href=""><i class="fas fa-play-circle play-icon"></i></a>
                     </div>
-                    <div class="movie-card">
-                        <span class="age-rating">18+</span>
-                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">K</span>
-                        <img alt="Poster of Woodwalkers movie"
-                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="name-movie">Người Hóa Thú</h6>
-                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">18+</span>
-                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">K</span>
-                        <img alt="Poster of Woodwalkers movie"
-                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="name-movie">Người Hóa Thú</h6>
-                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">18+</span>
-                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">K</span>
-                        <img alt="Poster of Woodwalkers movie"
-                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="name-movie">Người Hóa Thú</h6>
-                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">18+</span>
-                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">K</span>
-                        <img alt="Poster of Woodwalkers movie"
-                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="name-movie">Người Hóa Thú</h6>
-                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">18+</span>
-                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">K</span>
-                        <img alt="Poster of Woodwalkers movie"
-                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="name-movie">Người Hóa Thú</h6>
-                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">18+</span>
-                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">K</span>
-                        <img alt="Poster of Woodwalkers movie"
-                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="name-movie">Người Hóa Thú</h6>
-                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">18+</span>
-                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">K</span>
-                        <img alt="Poster of Woodwalkers movie"
-                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="name-movie">Người Hóa Thú</h6>
-                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">18+</span>
-                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">K</span>
-                        <img alt="Poster of Woodwalkers movie"
-                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="name-movie">Người Hóa Thú</h6>
-                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">18+</span>
-                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">K</span>
-                        <img alt="Poster of Woodwalkers movie"
-                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="name-movie">Người Hóa Thú</h6>
-                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">18+</span>
-                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">K</span>
-                        <img alt="Poster of Woodwalkers movie"
-                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="name-movie">Người Hóa Thú</h6>
-                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
-                    </div>
-                    <div class="movie-card">
-                        <span class="age-rating">18+</span>
-                        <img alt="Poster of Quỷ Môn Quan: Phong Ấn movie"
-                            src="https://storage.googleapis.com/a1aa/image/WSPgOzGOEboMFN5wtY6q4qkjotMEi4RNQq9KYuWlMfK73zAKA.jpg" />
-                        <i class="fas fa-play-circle play-icon"></i>
-                        <h6 class="mt-2">Quỷ Môn Quan: Phong Ấn</h6>
-                        <p class="description-movie">Kinh Dị, Chính Kịch</p>
-                    </div>
-
+                    
                 </div>
-
+                <!-- Pagination Start -->
+                <div class="pagination-area text-center mt-4">
+                    <ul class="pagination">
+                        <li><a href="#"><i class="fa-solid fa-angles-left fa-lg" style="color: #ffffff;"></i></a></li>
+                        <li><a class="active" href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#"><i class="fa-solid fa-angles-right fa-lg" style="color: #ffffff;"></i></a></li>
+                    </ul>
+                </div>
+                <!-- Pagination End -->
             </div>
         </div>
     </main>
@@ -797,7 +381,7 @@
             </div>
         </div>
     </footer>
-
+    
 
     <!-- Modal - redister -->
     <div class="modal fade" id="register" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
@@ -836,7 +420,7 @@
                         <button class="btn btn-register">Đăng ký</button>
 
                         <div class="mt-3">
-                            <p>Bạn đã có tài khoản?<a href="">Đăng nhập?</a></p>
+                            <p>Bạn đã có tài khoản? &nbsp;&nbsp; <a data-bs-toggle="modal" data-bs-target="#login" href="">Đăng nhập?</a></p>
                         </div>
                         <!-- <div class="modal-footer">
                             <button>Đăng ký</button>
@@ -857,7 +441,7 @@
                     <form id="serviceForm" action="/admin/service_management/save" method="post"
                         modelAttribute="newService" enctype="multipart/form-data">
                         <!-- <input type="hidden" id="serviceId" name="id" /> -->
-                        
+
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" id="email" name="email" />
@@ -871,7 +455,7 @@
                             <label for="remember">Ghi nhớ đăng nhập</label>
                         </div>
                         <div class="mt-3">
-                            <p>Bạn chưa có tài khoản?<a href="">Đăng ký?</a></p>
+                            <p>Bạn chưa có tài khoản? &nbsp; <a data-bs-toggle="modal" data-bs-target="#register" href="">Đăng ký?</a></p>
                         </div>
                         <button class="btn btn-register">Đăng nhập</button>
                     </form>
@@ -880,6 +464,8 @@
         </div>
     </div>
 </body>
+
+<script src="/js/axios_home.js"></script>
 <script src="/js/home.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>

@@ -1,26 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách rạp chiếu phim</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/home.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
+
 <body>
-    <div class="description-movie-main">
-        <div class="date-selector">
-            <button class="btn-date-selector-left">←</button>
-            <ul class="show-list-date">
-                <li class="date-item">CGV Aeon Bình Tân</li>
-                <li class="date-item">CGV Aeon Tân Phú</li>
-                <li class="date-item">CGV Crescent Mall</li>
-                <li class="date-item">CGV Giga Mall Thủ Đức</li>
-                <li class="date-item">CGV Hoàng Văn Thụ</li>
-                <li class="date-item">CGV Hùng Vương Plaza</li>
-            </ul>
-            <button class="btn-date-selector-right">→</button>
+    <!-- <div id="header"></div>
+    <script> $(function () { $("#header").load("header.html"); }); </script> -->
+    <header>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Fixed top</a>
+                <div>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" href="#">Lịch
+                                chiếu</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Phim chiếu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Review phim</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" href="#">Blog
+                                phim</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <div style="display: none;" class="dropdown">
+                    <label style="cursor: pointer;" class="dropdown-toggle" data-bs-toggle="dropdown">
+                        <img style="width: 40px;height: 40px;border-radius: 50px;" src="/img/logo.png" alt="">
+                        <span style="color: aliceblue;">xuan duong</span>
+                    </label>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                    </ul>
+                </div>
+                <div>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">Đăng nhập</button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#register">Đăng ký</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <!-- phim đang chiếu -->
+        <div class="main_header " style="background-image: url('/img/background_cienmas.jpg')">
+            <div class="container pt-5 pb-5">
+                <h2 class="text-center mb-4 mt-4" margin-top: 50px;>
+                    Phim đang chiếu
+                </h2>
+                <div class="list-show-movie">
+                    <button type="button" class="btn-scroll-prev-btn scroll-left"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <div class="list-show" id="now-showing-movies">
+                        <div class="movie-card">
+                            <span class="movie-rating">K</span>
+                            <div class="movie-poster-img">
+                                <a href="">
+                                    <img alt="Poster of Woodwalkers movie"
+                                        src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                                </a>
+                            </div>
+                            <h6 class="modal-title">Người Hóa Thú</h6>
+                            <p class="movie-genre">Giả Tưởng, Gia Đình</p>
+                            <p class="rating"><i class="fas fa-star"></i>10 &nbsp; <a class="trailer-button" href=""><i
+                                        class="fas fa-play-circle play-icon"></i> Xem trailer</a></p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-scroll-next-btn scroll-right"><i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
         </div>
-    </div>
-    <script src="script.js"></script>
+        <!-- phim sắp chiếu -->
+        <div class="main_content">
+            <div class="container pt-5">
+                <h2 class="text-center mb-4 mt-4" margin-top: 50px;>
+                    Phim sắp chiếu
+                </h2>
+                <div class="list-show-movie ">
+                    <button  type="button" class="btn-scroll-prev-btn scroll-left"><i
+                            class="fas fa-chevron-left"></i></button>
+                    <div class="list-show" id="upcoming-movies">
+                        <div class="movie-card">
+                            <span class="movie-rating">K</span>
+                            <div class="movie-poster-img">
+                                <a href="">
+                                    <img alt="Poster of Woodwalkers movie"
+                                        src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                                </a>
+                            </div>
+                            <h6 class="modal-title">Người Hóa Thú</h6>
+                            <p class="movie-genre">Giả Tưởng, Gia Đình</p>
+                            <a class="trailer-button" href=""><i class="fas fa-play-circle play-icon"></i> Xem
+                                trailer</a>
+
+                        </div>
+
+                    </div>
+                    <button type="button" class="btn-scroll-next-btn scroll-right"><i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+
+            </div>
+        </div>
+        <div class="main_footer">
+            <div class="container pt-5">
+                <div class="search-movie">
+                    <h3>
+                        Tìm phim trên rạp
+                    </h3>
+                    <div class="filter-menu">
+                        <!-- Dropdown Thể loại -->
+                        <div class="dropdown">
+                            <button class="btn btn-menu-search dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Thể loại
+                            </button>
+
+                        </div>
+                        <!-- Dropdown Quốc gia -->
+                        <div class="dropdown">
+                            <button class="btn btn-menu-search dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Quốc gia
+                            </button>
+
+                        </div>
+                        <!-- Dropdown Năm -->
+                        <div class="dropdown">
+                            <button class="btn btn-menu-search dropdown-toggle" type="button" id="dropdownMenuButton"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Năm
+                            </button>
+
+                        </div>
+
+                        <!-- Search box -->
+                        <div class="search-box">
+                            <input type="text" placeholder="Tìm theo tên phim ..."><label for=""><i
+                                    class="fa-solid fa-magnifying-glass fa-lg" style="color: #000000;"></i></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-movie-search" id="list-movies">
+                    <div class="movie-card">
+                        <span class="age-rating">K</span>
+                        <img alt="Poster of Woodwalkers movie"
+                            src="https://storage.googleapis.com/a1aa/image/ExQZeAnIC4yWK6zOOY6e8SGFfO1ltDwpaEAyDTf0b5nPf9MgC.jpg" />
+                        <a href=""><i class="fas fa-play-circle play-icon"></i></a>
+                        <h6 class="name-movie">Người Hóa Thú</h6>
+                        <p class="description-movie">Giả Tưởng, Gia Đình</p>
+                    </div>
+
+                </div>
+                <!-- Pagination Start -->
+                <div class="pagination-area text-center mt-4">
+                    <ul class="pagination">
+                        <li><a href="#"><i class="fa-solid fa-angles-left fa-lg" style="color: #ffffff;"></i></a></li>
+                        <li><a class="active" href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#"><i class="fa-solid fa-angles-right fa-lg" style="color: #ffffff;"></i></a></li>
+                    </ul>
+                </div>
+                <!-- Pagination End -->
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-content-1">
+                    <h3>Chăm sóc khách hàng</h3>
+                    <div class="link-connect">
+                        <p>Địa chỉ: 180 Cao Lỗ, Phường 4, Quận 8, TP.HCM</p>
+                        <p>Điện thoại: 1900 1000</p>
+                        <p>Email:
+                            <a href="mailto: duongvo.261104@gmail.com" style="color: #ffffff;">
+                                duongvo.261104@gmail.com
+                            </a>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="footer-content-2">
+                    <h3>Mua vé xem phim</h3>
+                    <div class="link-connect">
+                        <a href="#">Lịch chiếu phim</a>
+                        <a href="#">Rạp chiếu phim</a>
+                        <a href="#">Phim chiếu rạp</a>
+                        <a href="#">Review phim</a>
+                        <a href="#">Blog phim</a>
+                    </div>
+                </div>
+                <div class="footer-content-3">
+                    <h3>Chính sách</h3>
+                    <div class="link-connect">
+                        <a href="#">Chính sách bảo mật</a>
+                        <a href="#">Chính sách thanh toán</a>
+                        <a href="#">Chính sách vé</a>
+                        <a href="#">Chính sách đổi trả</a>
+                        <a href="#">Chính sách bảo hành</a>
+                    </div>
+
+                </div>
+                <div class="footer-content-4">
+                    <h3>Liên kết</h3>
+                    <div class="link-lh">
+                        <a href="https://www.facebook.com/"><i class="fab fa-facebook-f" style="color: azure;"></i></a>
+                        <a href="https://www.instagram.com/"><i class="fab fa-instagram" style="color: azure;"></i></a>
+                        <a href="https://www.youtube.com/"><i class="fab fa-youtube" style="color: azure;"></i></a>
+                        <a href="https://www.twitter.com/"><i class="fab fa-twitter" style="color: azure;"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
 </body>
+
+<script>
+    function getAllMovie() {
+        axios.get('http://localhost:8080/api/v1/movie/allMovies')
+            .then(function (response) {
+                console.log(response.data);
+                let data = response.data.data; // Lấy danh sách phim
+
+                let allMovie = document.getElementById('list-movies');
+                let upcomingMovie = document.getElementById('upcoming-movies');
+                let nowShowingMovie = document.getElementById('now-showing-movies');
+
+
+                let html = '';
+
+                if (data && data.length > 0) {
+                    data.forEach(movie => {
+                        html += `
+                        <div class="movie-card">
+                            <span class="movie-rating">${movie.rating}</span>
+                            <div class="movie-poster-img">
+                                <a href="movie-detail.html?movie_id=${movie.id}">
+                                    <img src="${movie.posterUrl || 'default.jpg'}" alt="Poster của ${movie.title}" />
+                                </a>
+                            </div>
+                            
+                            <h6 class="movie-title">${movie.title}</h6>
+                            <p class="movie-genre">${movie.genre ? movie.genre.join(', ') : 'Không xác định'}</p>
+                            <a class="trailer-button" href="${movie.trailerUrl}" target="_blank">
+                                    <i class="fas fa-play-circle"></i> Xem trailer
+                                </a>
+                        </div>
+                    `;
+
+                    });
+                } else {
+                    html = '<p class="text-center text-white">Không có phim nào.</p>';
+                }
+
+                allMovie.innerHTML = html;
+                upcomingMovie.innerHTML = html;
+                nowShowingMovie.innerHTML = html;
+            })
+            .catch(function (error) {
+                console.error("Lỗi khi lấy danh sách phim:", error);
+            });
+    }
+
+    getAllMovie();
+
+
+
+</script>
+<script>
+    function initializeScrollButtons(containerSelector) {
+        const movieContainer = document.querySelector(containerSelector);
+        const movieList = movieContainer.querySelector('.list-show');
+        const movieCards = movieList.querySelectorAll('.movie-card');
+        const scrollLeftBtn = movieContainer.querySelector('.btn-scroll-prev-btn');
+        const scrollRightBtn = movieContainer.querySelector('.btn-scroll-next-btn');
+
+        console.log("số lượng card = ", movieCards.length);
+
+        const visibleMovieCount = 5;
+        const cardWidth = movieCards[0]?.offsetWidth + 20 || 0; // Chiều rộng của card + khoảng cách giữa các card
+        let scrollPosition = 0;
+
+        // Hiển thị hoặc ẩn các nút điều hướng
+        function updateButtons() {
+            scrollLeftBtn.style.display = scrollPosition > 0 ? 'block' : 'none';
+            scrollRightBtn.style.display = (scrollPosition + visibleMovieCount) < movieCards.length ? 'block' : 'none';
+        }
+
+        // Xử lý sự kiện bấm nút trái
+        scrollLeftBtn.onclick = function (event) {
+            event.stopPropagation();
+            scrollPosition = Math.max(0, scrollPosition - visibleMovieCount);
+            movieList.scrollTo({ left: scrollPosition * cardWidth, behavior: 'smooth' });
+            updateButtons();
+        };
+
+        // Xử lý sự kiện bấm nút phải
+        scrollRightBtn.onclick = function (event) {
+            event.stopPropagation();
+            scrollPosition = Math.min(movieCards.length - visibleMovieCount, scrollPosition + visibleMovieCount);
+            movieList.scrollTo({ left: scrollPosition * cardWidth, behavior: 'smooth' });
+            updateButtons();
+        };
+
+        updateButtons(); // Cập nhật lần đầu khi trang load
+    }
+
+    // Khởi tạo chức năng cuộn cho từng container
+    setTimeout(() => {
+        initializeScrollButtons('.main_header .list-show-movie');
+        initializeScrollButtons('.main_content .list-show-movie');
+    }, 1000); // Đợi 1 giây để đảm bảo phim đã tải
+
+</script>
+
+
 </html>

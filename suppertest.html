@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mua vé xem phim</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: white;
+        }
+
+        .seat {
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            border-radius: 5px;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            color: white;
+            font-size: 12px;
+        }
+
+        .seat-available {
+            background-color: #6f42c1;
+        }
+
+        .seat-vip {
+            background-color: #dc3545;
+        }
+
+        .seat-couple {
+            background-color: #e83e8c;
+        }
+
+        .seat-booked {
+            background-color: #343a40;
+            cursor: not-allowed;
+        }
+
+        .seat-selected {
+            background-color: #ff66b2;
+        }
+
+        .seat-center {
+            border: 2px solid #28a745;
+        }
+
+        .screen {
+            background-color: #fff;
+            color: #000;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center" style="color: #e83e8c;">Mua vé xem phim</h2>
+        <p class="text-center">Nữ Tu Bóng Tối - 14:30 ~ 16:25 - Hôm nay, 21/02 - Phòng chiếu P7 - 2D Phụ đề</p>
+        <div class="screen">Màn hình</div>
+
+        <div id="seat-map" class="d-flex flex-column align-items-center"></div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #343a40;"></div>Đã đặt
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #6f42c1;"></div>Ghế thường
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #dc3545;"></div>Ghế VIP
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: #e83e8c;"></div>Ghế đôi
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="border: 2px solid #28a745;"></div>Vùng trung tâm
+            </div>
+        </div>
+
+        <div class="mt-4 p-3 bg-light text-dark rounded">
+            <h5>Chỗ ngồi:</h5>
+            <p id="selected-seats">Chưa chọn ghế nào</p>
+            <h5>Tạm tính:</h5>
+            <p id="total-price">0đ</p>
+            <button class="btn btn-pink text-white" id="buy-ticket">Mua vé</button>
+        </div>
+    </div>
+
+    <script>
+        const seatData = [
+            {
+                "id": 1,
+                "seatNumber": "A1",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 2,
+                "seatNumber": "A2",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 3,
+                "seatNumber": "A3",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 4,
+                "seatNumber": "A4",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 5,
+                "seatNumber": "A5",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 6,
+                "seatNumber": "A6",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 7,
+                "seatNumber": "A7",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 8,
+                "seatNumber": "A8",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 9,
+                "seatNumber": "A9",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 10,
+                "seatNumber": "A10",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 11,
+                "seatNumber": "A11",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 12,
+                "seatNumber": "A12",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 13,
+                "seatNumber": "B1",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 14,
+                "seatNumber": "B2",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 15,
+                "seatNumber": "B3",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 16,
+                "seatNumber": "B4",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 17,
+                "seatNumber": "B5",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 18,
+                "seatNumber": "B6",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 19,
+                "seatNumber": "B7",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 20,
+                "seatNumber": "B8",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 21,
+                "seatNumber": "B9",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 22,
+                "seatNumber": "B10",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 23,
+                "seatNumber": "B11",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 24,
+                "seatNumber": "B12",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 25,
+                "seatNumber": "C1",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 26,
+                "seatNumber": "C2",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 27,
+                "seatNumber": "C3",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 28,
+                "seatNumber": "C4",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 29,
+                "seatNumber": "C5",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 30,
+                "seatNumber": "C6",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 31,
+                "seatNumber": "C7",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 32,
+                "seatNumber": "C8",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 33,
+                "seatNumber": "C9",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 34,
+                "seatNumber": "C10",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 35,
+                "seatNumber": "C11",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 36,
+                "seatNumber": "C12",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 37,
+                "seatNumber": "D1",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 38,
+                "seatNumber": "D2",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 39,
+                "seatNumber": "D3",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 40,
+                "seatNumber": "D4",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 41,
+                "seatNumber": "D5",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 42,
+                "seatNumber": "D6",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 43,
+                "seatNumber": "D7",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 44,
+                "seatNumber": "D8",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 45,
+                "seatNumber": "D9",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 46,
+                "seatNumber": "D10",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 47,
+                "seatNumber": "D11",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            },
+            {
+                "id": 48,
+                "seatNumber": "D12",
+                "seatType": "STANDARD",
+                "seatStatus": "AVAILABLE"
+            }
+        ];
+
+        let selectedSeats = [];
+        let totalPrice = 0;
+
+        $(document).ready(function () {
+            const rows = [...new Set(seatData.map(seat => seat.seatNumber.charAt(0)))];
+            rows.forEach(row => {
+                const rowSeats = seatData.filter(seat => seat.seatNumber.startsWith(row));
+                const rowDiv = $('<div class="d-flex justify-content-center"></div>');
+                rowSeats.forEach(seat => {
+                    let seatClass = 'seat-available';
+                    if (seat.seatStatus === 'occupied') seatClass = 'seat-booked';
+                    else if (seat.seatType === 'VIP') seatClass = 'seat-vip';
+
+                    const seatDiv = $('<div></div>')
+                        .addClass(`seat ${seatClass}`)
+                        .text(seat.seatNumber)
+                        .attr('id', seat.seatNumber);
+
+                    seatDiv.click(function () {
+                        if (!$(this).hasClass('seat-booked')) {
+                            $(this).toggleClass('seat-selected');
+                            const seatId = $(this).attr('id');
+                            if (selectedSeats.includes(seatId)) {
+                                selectedSeats = selectedSeats.filter(s => s !== seatId);
+                            } else {
+                                selectedSeats.push(seatId);
+                            }
+                            $('#selected-seats').text(selectedSeats.length ? selectedSeats.join(', ') : 'Chưa chọn ghế nào');
+                            totalPrice = selectedSeats.length * 75000;
+                            $('#total-price').text(totalPrice.toLocaleString('vi-VN') + 'đ');
+                        }
+                    });
+                    rowDiv.append(seatDiv);
+                });
+                $('#seat-map').append(rowDiv);
+            });
+
+            $('#buy-ticket').click(function () {
+                if (selectedSeats.length > 0) {
+                    alert('Bạn đã mua vé cho các ghế: ' + selectedSeats.join(', ') + '\nTổng cộng: ' + totalPrice.toLocaleString('vi-VN') + 'đ');
+                } else {
+                    alert('Vui lòng chọn ghế trước khi mua vé.');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
