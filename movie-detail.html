@@ -115,7 +115,7 @@
                         <div class="row col-12">
                             <div class="col-8">
                                 <h4><b>
-                                        Lịch chiếu : <span class="movie-title-1"> NCT DREAM Mystery Lab: DREAM( )SCAPE
+                                        Lịch chiếu :<span class="movie-title-1"> NCT DREAM Mystery Lab: DREAM( )SCAPE
                                             in Cinemas</span>
                                     </b></h4>
                             </div>
@@ -243,54 +243,8 @@
                             </div>
                             <hr>
                             <div class="list-theaters">
-                                <div class="list-theater-item">
-                                    <!-- <div class="list-theater-item-main">
-                                        <div class=" row">
-                                            <div class="theater-item-main-logo col-1">
-                                                <img src="/img/logo-rapchieuphim.avif" alt="logo">
-                                            </div>
-                                            <div class="theater-item-main-content col-9">
-                                                <p style="font-weight: 16px;margin-bottom: 0;">BHD Star Bitexco</p>
-                                                <p style="font-size: 12px; color: rgb(169, 169, 169);margin-bottom: 0;">
-                                                    2 Hai Trieu, District 1, Ho Chi Minh City <a
-                                                        href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.8977453149246!2d105.83245751424809!3d21.036777085994046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135aba15ec15d17%3A0x620e85c2cfe14d4c!2zTMSDbmcgSOG7kyBDaMOtIE1pbmg!5e0!3m2!1svi!2sus!4v1501056274257">[
-                                                        Bản đồ ]</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="showtime">
-                                            <div class="schedule">2D Phụ đề</div>
-                                            <div id="time_slot_showTime">
-                                                <div data-bs-toggle="modal" data-bs-target="#ticket" class="time-slot">
-                                                    <span class="highlight">14:30</span> ~ 16:25
-                                                </div>
-                                                <div data-bs-toggle="modal" data-bs-target="#ticket" class="time-slot">
-                                                    <span class="highlight">19:00</span> ~ 20:55
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="list-theater-item-main">
-                                        <div class=" row">
-                                            <div class="theater-item-main-logo col-1">
-                                                <img src="/img/logo-rapchieuphim.avif" alt="logo">
-                                            </div>
-                                            <div class="theater-item-main-content col-9">
-                                                <p style="font-weight: 16px;margin-bottom: 0;">Mega GS Cao Thang</p>
-                                                <p style="font-size: 12px; color: rgb(169, 169, 169);margin-bottom: 0;">
-                                                    19 Cao Thang, District 3, Ho Chi Minh City <a href="#">[ Bản đồ ]</a></p>
-                                            </div>
-                                        </div>
-                                        <div class="showtime">
-                                            <div class="schedule">2D Phụ đề</div>
-                                            <div data-bs-toggle="modal" data-bs-target="#ticket" class="time-slot">
-                                                <span class="highlight">14:30</span> ~ 16:25
-                                            </div>
-                                            <div data-bs-toggle="modal" data-bs-target="#ticket" class="time-slot">
-                                                <span class="highlight">19:00</span> ~ 20:55
-                                            </div>
-                                        </div>
-                                    </div> -->
+                                <div onclick="" class="list-theater-item">
+                                    
                                 </div>
 
                             </div>
@@ -325,6 +279,7 @@
                     </div>
                 </div>
             </div>
+        </div>
 
 
     </main>
@@ -387,8 +342,7 @@
                     <h5 class="modal-title" id="serviceModalLabel">Đăng ký</h5>
                 </div>
                 <div class="modal-body col-12 ">
-                    <form id="serviceForm" action="/admin/service_management/save" method="post"
-                        modelAttribute="newService" enctype="multipart/form-data">
+                    <form id="serviceForm" >
                         <!-- <input type="hidden" id="serviceId" name="id" /> -->
                         <div class="mb-3 ">
                             <label for="username" class="form-label">Họ Tên</label>
@@ -427,24 +381,23 @@
         </div>
     </div>
     <!--Modal - login-->
-    <div class="modal fade" id="login" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+    <div class="modal fade" id="logi" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content p-3">
                 <div class="modal-header mx-auto">
                     <h5 class="modal-title" id="serviceModalLabel">Đăng nhập</h5>
                 </div>
                 <div class="modal-body col-12 ">
-                    <form id="serviceForm" action="/admin/service_management/save" method="post"
-                        modelAttribute="newService" enctype="multipart/form-data">
+                    <form id="serviceForm" >
                         <!-- <input type="hidden" id="serviceId" name="id" /> -->
 
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" />
+                            <input type="email" class="form-control" id="email" name="email" required />
                         </div>
                         <div class="mb-3 ">
                             <label for="password" class="form-label">Mật khẩu</label>
-                            <input type="text" class="form-control" id="password" name="password" />
+                            <input type="text" class="form-control" id="password" name="password" required />
                         </div>
                         <div class="mb-3">
                             <input type="checkbox" id="remember" name="remember">
@@ -460,14 +413,12 @@
         </div>
     </div>
     <!-- Modal - ticket -->
-    <div class="modal fade" id="ticket" tabindex="-1" aria-labelledby="ticketModalLabel" aria-hidden="true">
+    <div class="modal fade" id="ticket" tabindex="-1" data-bs-focus="false" aria-labelledby="ticketModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content p-3" style="background-color: #1e1e1e; color: #ffffff;">
                 <div class="modal-header mx-auto">
                     <h5 class="modal-title" id="ticketModalLabel" style="color: #e83e8c;">Mua vé xem phim</h5>
-                    <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button> -->
+                    
                 </div>
                 <div class="modal-body">
                     <div class="screen">Màn hình</div>
@@ -490,9 +441,7 @@
                         </div>
                     </div>
                     <div class="mt-4 p-3 bg-light text-dark rounded">
-                        <p class="text-center">Nữ Tu Bóng Tối - 14:30 ~ 16:25 - Hôm nay, 21/02 - Phòng chiếu P7 - 2D Phụ
-                            đề
-                        </p>
+                        <b><p style="color: #e83e8c; font-size: 18px;" class="text-center"></p></b>
                         <h5>Chỗ ngồi:</h5>
                         <p id="selected-seats">Chưa chọn ghế nào</p>
                         <h5>Tạm tính:</h5>
@@ -501,17 +450,126 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
-                    <button type="button" class="btn btn-success">Xác nhận mua vé</button>
+                    <button type="button" id="buy-ticket" class="btn btn-success">Xác nhận mua vé</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal - booking -->
+    <div class="modal fade" id="booking" tabindex="-1" aria-labelledby="bookingLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content ps-3 pe-3">
+                
+                <div class="modal-body col-12 ">
+                   
+                        <input type="hidden" id="showtime_id" name="id" />
+
+                        <div class="mb-0 d-flex justify-content-center">
+                            <b><h2 class="name-movie mb-0" style="color: #e83e8c;"> Xứ Sở các nguyên tố</h2></b>
+                        </div>
+                        <hr>
+                        <div class="mb-3 row">
+                            <div class="col-6" >
+                                <p style="font-size: 11px;" class="mb-0" >THỜI GIAN</p>
+                                <b><p class="showtime-time mb-0">23:00 ~ 01:00</p></b>
+                            </div>
+                            <div class="col-6">
+                                <p style="font-size: 11px;" class="mb-0">NGÀY CHIẾU</p>
+                                <b><p class="showtime-date mb-0">21/02/2021</p></b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="mb-3">
+                            <p style="font-size: 11px;" class="mb-0">RẠP</p>
+                            <b><p class="cinema_title mb-0">BHD Star Bitexco</p></b>
+                            <p class="cinema_address mb-0" style="font-size: 11px;">2 Hai Trieu, District 1, Ho Chi Minh City</p>
+                        </div>
+                        <div class="mb-3 row">
+                            <div class="col-6">
+                                <p style="font-size: 11px;" class="mb-0">PHÒNG CHIẾU</p>
+                                <b><p class="room-movie mb-0">P12</p></b>
+                            </div>
+                            <div class="col-6">
+                                <p style="font-size: 11px;" class="mb-0">ĐỊNH DẠNG</p>
+                                <b><p class="type-movie mb-0">2D</p></b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="mb-3 row">
+                            <div class="col-6">
+                                <p style="font-size: 11px;" class="mb-0">GHẾ</p>
+                                <b><p class="seats mb-0" data-value="" >A1, A2</p></b>
+                                <input type="hidden" name="seats" id="seats" value="">
+                            </div>
+                            <div class="col-6">
+                                <p style="font-size: 11px;" class="mb-0">&nbsp;</p>
+                                <b><p class="price-seat mb-0">155.000 đ</p></b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="mb-3 row">
+                            <div class="col-6">
+                                <p  class="mb-0"><b>TẠM TÍNH</b></p>
+                            </div>
+                            <div class="col-6">
+                                <b><p class="price-tt mb-0">155.000 đ</p></b>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="mb-3 row">
+                            <div class="col-6">
+                                <input style="border-color: #e83e8c;" type="text" class="form-control discount_code" id="discount" name="discount" placeholder="Mã giảm giá" />
+                                <button id="apdung" class="btn btn-secondary mt-2" onclick="checkDiscount()">Áp dụng</button>
+                            </div>
+                            <div class="col-6">
+                                <div class="dropdown">
+                                    <button style="border-color: #e83e8c;" class="btn dropdown-toggle" type="button" id="paymentDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="img/vnpay.jpg" style="width: 30px; height: 30px; margin-right: 10px;" alt="logo vnpay"> VNPAY
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="paymentDropdown">
+                                        <li><a class="dropdown-item" href="#" data-value="VNPAY" data-img="img/vnpay.jpg">
+                                            <img src="img/vnpay.jpg" style="width: 30px; height: 30px; margin-right: 10px;" alt="logo vnpay"> VNPAY
+                                          </a></li>
+                                      <li><a class="dropdown-item"  href="#" data-value="MOMO" data-img="img/momo.png">
+                                        <img src="img/momo.png" style="width: 30px; height: 30px; margin-right: 10px;" alt="logo momo"> MOMO
+                                      </a></li>
+                                      <li><a class="dropdown-item" href="#" data-value="ZALO_PAY" data-img="img/zalo_pay.png">
+                                        <img src="img/zalo_pay.png" style="width: 30px; height: 30px; margin-right: 10px;" alt="logo zalo pay"> ZALO PAY
+                                      </a></li>
+                                      <li><a class="dropdown-item" href="#" data-value="PAYPAL" data-img="img/paypal.webp">
+                                        <img src="img/paypal.webp" style="width: 30px; height: 30px; margin-right: 10px;" alt="logo paypal"> PAYPAL
+                                      </a></li>
+                                    </ul>
+                                  </div>
+                                  
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="mb-3 row">
+                            <div class="col-6">
+                                <p class="mb-0"><b>TỔNG TIỀN</b> </p>
+                            </div>
+                            <div class="col-6">
+                                <b><p class="total-price mb-0">155.000 đ</p></b>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-bs-dismiss="modal" onclick="resetDiscount()" >Trở lại</button>
+                            <button class="btn btn-primary" style="background-color: #e83e8c; border-color: #e83e8c;" onclick="payment()">Xác nhận thanh toán</button>
+                        </div>
+                    
                 </div>
             </div>
         </div>
     </div>
 
+
 </body>
+  
 <script src="/js/description-movie.js"></script>
 <script src="js/movie-detail.js"></script>
 <!-- <script src="js/home.js"></script> -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
 </html>

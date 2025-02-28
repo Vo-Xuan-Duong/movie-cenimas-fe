@@ -1,0 +1,34 @@
+.container_order_success{
+    margin-top: 40px;
+    border-radius: 10px ;
+    background-color: rgb(217, 215, 213);
+    padding: 20px;
+}
+
+.order-success-main-right{
+    background-color: white;
+    border-radius: 0 10px 10px 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center;    /* Căn giữa theo chiều dọc */
+    
+}
+
+.hidden{
+    display: none;
+}
+
+.spinner {
+    width: 3rem;
+    height: 3rem;
+    border: 0.4rem solid #ccc;
+    border-top: 0.4rem solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 1.5rem auto;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/order-success.css">
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <!-- <div id="header"></div>
+    <script> $(function () { $("#header").load("header.html"); }); </script> -->
+    <header>
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">Fixed top</a>
+                <div>
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" href="#">Lịch
+                                chiếu</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Phim chiếu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="">Review phim</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" href="#">Blog
+                                phim</a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+                                <li class="dropdown-item">123</li>
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <div style="display: none;" class="dropdown">
+                    <label style="cursor: pointer;" class="dropdown-toggle" data-bs-toggle="dropdown">
+                        <img style="width: 40px;height: 40px;border-radius: 50px;" src="/img/logo.png" alt="">
+                        <span class="dropdown-toggle" style="color: aliceblue;">xuan duong</span>
+                    </label>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+                        <li class="dropdown-item">123</li>
+
+                    </ul>
+                </div>
+                <div>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">Đăng nhập</button>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#register">Đăng ký</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container pt-5 ">
+                <div class="container_order_success col-12">
+                    <div class="order-success-header col text-center">
+                        <i class="fa-solid fa-circle-check fa-2xl" style="color: #0cba0a;"></i>
+                        <h1 class="text-center">Đặt vé thành công</h1>
+                        <p class="text-center">Mã đơn hàng của bạn là: <span class="text-primary bookingCode">123456</span></p>
+                        
+                    </div>
+                    <div class="order-success-main row">
+                        <div class="col-12 d-flex justify-content-center gap-4">
+                            <div class="col-lg-6  row order-success-main-left">
+                                <div class="mb-0 d-flex justify-content-center">
+                                    <b><h2 class="name-movie mb-3" style="color: #e83e8c;"> Xứ Sở các nguyên tố</h2></b>
+                                </div>
+                                <hr>
+                                <div class="mb-3 row">
+                                    <div class="col-7" >
+                                        <p style="font-size: 11px;" class="mb-0" >THỜI GIAN</p>
+                                        <b><p class="showtime-time mb-0">23:00 ~ 01:00</p></b>
+                                    </div>
+                                    <div class="col-5">
+                                        <p style="font-size: 11px;" class="mb-0">NGÀY CHIẾU</p>
+                                        <b><p class="showtime-date mb-0">21/02/2021</p></b>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="mb-3">
+                                    <p style="font-size: 11px;" class="mb-0">RẠP</p>
+                                    <b><p class="cinema_title mb-0">BHD Star Bitexco</p></b>
+                                    <p class="cinema_address mb-0" style="font-size: 11px;">2 Hai Trieu, District 1, Ho Chi Minh City</p>
+                                </div>
+                                <div class="mb-3 row">
+                                    <div class="col-7">
+                                        <p style="font-size: 11px;" class="mb-0">PHÒNG CHIẾU</p>
+                                        <b><p class="room-movie mb-0">P12</p></b>
+                                    </div>
+                                    <div class="col-5">
+                                        <p style="font-size: 11px;" class="mb-0">ĐỊNH DẠNG</p>
+                                        <b><p class="type-movie mb-0">2D</p></b>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="mb-3 row">
+                                    <div class="col-6">
+                                        <p style="font-size: 11px;" class="mb-0">GHẾ</p>
+                                        <b><p class="seats mb-0" data-value="" >A1, A2</p></b>
+                                    </div>
+                                    <div class="col-6 ">
+                                        <p style="font-size: 11px;" class="mb-0">&nbsp;</p>
+                                        <b><p class="price-seat mb-0 d-flex justify-content-end">155.000 đ</p></b>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-6 ">
+                                        <p  class="mb-0"><b>TẠM TÍNH</b></p>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <b><p class="price-tt mb-0">155.000 đ</p></b>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-7">
+                                        <p  class="mb-0"><b>GIẢM GIÁ</b></p>
+                                    </div>
+                                    <div class="col-5 d-flex justify-content-end">
+                                        <b><p class="price-gg mb-0">155.000 đ</p></b>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3 row">
+                                    <div class="col-6">
+                                        <p class="mb-0"><b>TỔNG TIỀN</b> </p>
+                                    </div>
+                                    <div class="col-6 d-flex justify-content-end">
+                                        <b><p class="total-price mb-0">155.000 đ</p></b>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col order-success-main-right">
+                                <div class="qr-code">
+                                    <img id="qr-code-img" class="qr-code-img" src="img/momo.png" alt="QR Code" style="width: 200px;">
+                                    <p style="color: #e83e8c;">Mã QR để sử dụng khi vào rạp</p>
+                                    <button id="download-qr-btn" class="btn btn-primary" style="background-color: #e83e8c; border-color: #e83e8c;">Tải xuống QR Code</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="order-success-footer col-12  mt-3 text-center">
+                        <a href="index.html" class="btn btn-primary" style="background-color: #e83e8c;border-color: #e83e8c;">Quay lại trang chủ</a>
+
+                    </div>
+                </div>
+            
+
+        </div>
+        <div class="container pt-5 mt-5 text-center hidden" id="loading">
+            <div class="card shadow-sm p-4">
+                <h1 class="display-5 fw-bold text-primary">Trang Web Đang Xử Lý</h1>
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </main>
+    
+</body>
+<!-- <script src="js/home.js"></script> -->
+ <script src="js/order-success.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+</html>

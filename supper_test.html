@@ -1,259 +1,45 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <title>Demo Chọn Ghế Xem Phim</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 30px;
-    }
-    h1 {
-      text-align: center;
-    }
-    .screen {
-      width: 70%;
-      margin: 0 auto 20px auto;
-      padding: 10px;
-      background: #ccc;
-      text-align: center;
-      border-radius: 5px;
-      font-weight: bold;
-    }
-    .seat-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-    }
-    .seat-row {
-      display: flex;
-      gap: 5px;
-    }
-    .seat {
-      width: 40px;
-      height: 40px;
-      border-radius: 6px;
-      cursor: pointer;
-      text-align: center;
-      line-height: 40px;
-      font-size: 14px;
-      color: #fff;
-      user-select: none;
-    }
-    /* Trạng thái ghế */
-    .available {
-      background-color: #808080; /* Xám cho ghế thường */
-    }
-    .occupied {
-      background-color: #d32f2f; /* Đỏ cho ghế đã đặt */
-      cursor: not-allowed;
-    }
-    .vip {
-      background-color: #9c27b0; /* Tím cho ghế VIP */
-    }
-    .selected {
-      background-color: #ff9800; /* Cam cho ghế đang chọn */
-    }
-    /* Ví dụ ghế trung tâm (nếu có) */
-    .center-seat {
-      border: 2px solid #4caf50; /* viền xanh lá */
-    }
-    /* Phần chú thích (legend) */
-    .legend {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 20px;
-    }
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .legend-color {
-      width: 20px;
-      height: 20px;
-      border-radius: 4px;
-      display: inline-block;
-    }
-    .info {
-      text-align: center;
-      margin-top: 20px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Đang Xử Lý</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f8f9fa;
+        }
+        .spinner {
+            width: 3rem;
+            height: 3rem;
+            border: 0.4rem solid #ccc;
+            border-top: 0.4rem solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 1.5rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
-  <h1>Chọn Ghế Xem Phim</h1>
-  <div class="screen">Màn hình</div>
-
-  <div class="seat-container" id="seatContainer">
-    <!-- Ghế sẽ được sinh ra động từ JavaScript -->
-  </div>
-
-  <div class="legend">
-    <div class="legend-item">
-      <span class="legend-color" style="background-color: #808080;"></span> 
-      <span>Ghế thường (Trống)</span>
+    <div class="container text-center">
+        <div class="card shadow-sm p-4">
+            <h1 class="display-5 fw-bold text-primary">Trang Web Đang Xử Lý</h1>
+    
+            <div class="spinner"></div>
+            
+        </div>
     </div>
-    <div class="legend-item">
-      <span class="legend-color" style="background-color: #9c27b0;"></span> 
-      <span>Ghế VIP</span>
-    </div>
-    <div class="legend-item">
-      <span class="legend-color" style="background-color: #d32f2f;"></span> 
-      <span>Đã đặt</span>
-    </div>
-    <div class="legend-item">
-      <span class="legend-color" style="background-color: #ff9800;"></span> 
-      <span>Đang chọn</span>
-    </div>
-    <div class="legend-item">
-      <span class="legend-color" style="border: 2px solid #4caf50;"></span> 
-      <span>Ghế trung tâm</span>
-    </div>
-  </div>
 
-  <div class="info" id="infoSelected">Chưa chọn ghế nào</div>
-
-  <script>
-    // Ví dụ dữ liệu mô phỏng: Mỗi ghế gồm row (A, B, C...), number, status, vip (boolean?), center (boolean?)
-    // status có thể là: 'available' | 'occupied' | 'selected'
-    // vip: true/false (để xác định ghế VIP)
-    // center: true/false (nếu muốn đánh dấu ghế trung tâm)
-    const seatData = [
-      // Hàng A
-      { row: 'A', number: 1,  status: 'occupied', vip: false, center: false },
-      { row: 'A', number: 2,  status: 'available', vip: false, center: false },
-      { row: 'A', number: 3,  status: 'available', vip: true,  center: false },
-      { row: 'A', number: 4,  status: 'available', vip: false, center: false },
-      { row: 'A', number: 5,  status: 'available', vip: false, center: true  },
-      { row: 'A', number: 6,  status: 'available', vip: false, center: false },
-      { row: 'A', number: 7,  status: 'occupied', vip: false, center: false },
-      { row: 'A', number: 8,  status: 'available', vip: false, center: false },
-      { row: 'A', number: 9,  status: 'available', vip: true,  center: false },
-      { row: 'A', number: 10, status: 'available', vip: false, center: false },
-
-      // Hàng B
-      { row: 'B', number: 1,  status: 'available', vip: false, center: false },
-      { row: 'B', number: 2,  status: 'occupied', vip: false, center: false },
-      { row: 'B', number: 3,  status: 'available', vip: false, center: false },
-      { row: 'B', number: 4,  status: 'available', vip: false, center: true  },
-      { row: 'B', number: 5,  status: 'available', vip: false, center: false },
-      { row: 'B', number: 6,  status: 'available', vip: true,  center: false },
-      { row: 'B', number: 7,  status: 'available', vip: false, center: false },
-      { row: 'B', number: 8,  status: 'available', vip: false, center: false },
-      { row: 'B', number: 9,  status: 'available', vip: false, center: false },
-      { row: 'B', number: 10, status: 'occupied', vip: false, center: false },
-    ];
-
-    // Ta có thể nhóm ghế theo hàng để dễ hiển thị
-    function groupSeatsByRow(seats) {
-      const grouped = {};
-      seats.forEach(seat => {
-        if (!grouped[seat.row]) {
-          grouped[seat.row] = [];
-        }
-        grouped[seat.row].push(seat);
-      });
-      // Sắp xếp từng hàng theo number tăng dần
-      Object.keys(grouped).forEach(row => {
-        grouped[row].sort((a, b) => a.number - b.number);
-      });
-      return grouped;
-    }
-
-    const groupedSeats = groupSeatsByRow(seatData);
-
-    // Tạo UI
-    const seatContainer = document.getElementById('seatContainer');
-
-    Object.keys(groupedSeats).sort().forEach(rowKey => {
-      const rowDiv = document.createElement('div');
-      rowDiv.classList.add('seat-row');
-      
-      groupedSeats[rowKey].forEach(seat => {
-        const seatDiv = document.createElement('div');
-        seatDiv.classList.add('seat');
-
-        // Gán class trạng thái
-        if (seat.status === 'occupied') {
-          seatDiv.classList.add('occupied');
-        } else if (seat.status === 'available') {
-          seatDiv.classList.add('available');
-        } else if (seat.status === 'selected') {
-          seatDiv.classList.add('selected');
-        }
-
-        // Nếu là ghế VIP
-        if (seat.vip && seat.status === 'available') {
-          seatDiv.classList.remove('available');
-          seatDiv.classList.add('vip');
-        }
-
-        // Nếu muốn đánh dấu ghế trung tâm
-        if (seat.center) {
-          seatDiv.classList.add('center-seat');
-        }
-
-        seatDiv.textContent = seat.row + seat.number;
-
-        // Thêm sự kiện click (nếu ghế chưa bị chiếm)
-        seatDiv.addEventListener('click', () => {
-          if (seat.status === 'occupied') {
-            // Ghế đã đặt không cho click
-            return;
-          }
-          // Toggle chọn/bỏ chọn
-          if (seat.status === 'available' || seat.status === 'vip') {
-            seat.status = 'selected';
-          } else if (seat.status === 'selected') {
-            // Trả lại trạng thái ban đầu
-            seat.status = seat.vip ? 'vip' : 'available';
-          }
-
-          // Cập nhật class
-          updateSeatUI(seatDiv, seat);
-          // Cập nhật thông tin ghế đã chọn
-          updateSelectedInfo();
-        });
-
-        rowDiv.appendChild(seatDiv);
-      });
-
-      seatContainer.appendChild(rowDiv);
-    });
-
-    // Hàm cập nhật giao diện khi ghế thay đổi trạng thái
-    function updateSeatUI(seatDiv, seat) {
-      seatDiv.className = 'seat'; // Xóa hết class cũ, gán lại
-      if (seat.status === 'occupied') {
-        seatDiv.classList.add('occupied');
-      } else if (seat.status === 'available') {
-        seatDiv.classList.add('available');
-      } else if (seat.status === 'selected') {
-        seatDiv.classList.add('selected');
-      }
-      if (seat.vip && seat.status !== 'selected' && seat.status !== 'occupied') {
-        seatDiv.classList.remove('available');
-        seatDiv.classList.add('vip');
-      }
-      if (seat.center) {
-        seatDiv.classList.add('center-seat');
-      }
-    }
-
-    // Hàm hiển thị ghế đã chọn
-    function updateSelectedInfo() {
-      const info = document.getElementById('infoSelected');
-      const selectedSeats = seatData.filter(s => s.status === 'selected');
-      if (selectedSeats.length === 0) {
-        info.textContent = 'Chưa chọn ghế nào';
-      } else {
-        const seatNames = selectedSeats.map(s => s.row + s.number).join(', ');
-        info.textContent = `Ghế đã chọn: ${seatNames}`;
-      }
-    }
-  </script>
+    <!-- Bootstrap JS (optional, nếu cần các tính năng động) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
