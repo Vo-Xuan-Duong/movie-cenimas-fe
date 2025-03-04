@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/layout.js"></script>
+</head>
+
+<body class="sb-nav-fixed">
+    <div id="header-placeholder"></div>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+        </div>
+        <div id="layoutSidenav_content" style="background-color: rgb(200, 200, 200);">
+            <main>
+                <div class="container-fluid px-4">
+                    <ol class="breadcrumb mb-2 mt-2">
+                        <li class="breadcrumb-item active"></li>
+                        Dashboard / <a href="list-cinemas.html"> Danh sách rạp phim </a> / Tạo rạp phim
+                    </ol>
+                    
+                    
+                    <div class="card shadow-sm p-4 bg-white rounded">
+                        <div class="card-header">
+                            <button class="btn btn-primary" onclick="goBack()">Quay lại</button>
+                            <button class="btn btn-primary" onclick="createCinemas()">Tạo rạp chiếu</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-6" >
+                                <div>
+                                    <p>Tên rạp phim</p>
+                                    <input type="text" class="form-control" id="createCinemaName" placeholder="Nhập tên rạp phim">
+                                </div>
+                                <div>
+                                    <p>Địa chỉ</p>
+                                    <textarea class="form-control" name="" id="createCinemaAddress" placeholder="Nhập địa chỉ" rows="4"></textarea>
+                                </div>
+                                <div>
+                                    <p>Địa chỉ map</p>
+                                    <textarea class="form-control" name="" id="createCinemaAddressMap" placeholder="Nhập địa chỉ map" rows="4"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-6">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="js/main.js" ></script>
+   <script src="js/item-cinemas.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+</body>
+
+</html>

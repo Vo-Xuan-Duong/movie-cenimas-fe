@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Dashboard - SB Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/css/list_data.css">
+    <script src="js/layout.js"></script>
+
+</head>
+
+<body class="sb-nav-fixed">
+    <div id="header-placeholder"></div>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+
+        </div>
+        <div id="layoutSidenav_content" style="background-color: rgb(200, 200, 200);">
+            <main>
+                <div class="container-fluid px-4">
+                    <ol class="breadcrumb mb-2 mt-2">
+                        <li class="breadcrumb-item active"></li>
+                        Dashboard / Danh sách suất chiếu
+                    </ol>
+                    <div class="card col-12 shadow-sm p-4 mb-3 bg-white">
+                        <div class="card-header mb-4">
+                            <h3 class="text-center">Bộ lọc Suất chiếu</h3>
+                        </div>
+                        <div class="row g-4">
+                            <div class="col-4">
+                                <label for="cinema" class="form-label fw-bold">Rạp chiếu</label>
+                                <select class="form-select" name="" id="">
+                                    <option value="1">Phim 1</option>
+                                    <option value="2">Phim 2</option>
+                                    <option value="3">Phim 3</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <label for="" class="form-label fw-bold">Phòng chiếu</label>
+                                <select class="form-select" name="" id="">
+                                    <option value="1">Phòng 1</option>
+                                    <option value="2">Phòng 2</option>
+                                    <option value="3">Phòng 3</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <label for="" class="form-label fw-bold">Ngày chiếu</label>
+                                <input type="date" class="form-control" name="" id="">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-center mt-4">
+                                <button class="btn btn-primary">Lọc suất chiếu</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm p-4 bg-white rounded">
+                        <div class="card-header mb-4 d-flex justify-content-between align-items-center">
+                            <div>
+                                <a href="create-movie.html" class="btn btn-primary">Tạo suất chiếu</a>
+                                <button class="btn btn-primary" onclick="getAllMovies()">Refresh</button>
+                            </div>
+                            <div>
+                                <p>Tên rạp</p>
+                            </div>
+                        </div>
+                        <table class="card-body table">
+                            <thead>
+                                <tr>
+                                    <th>Phim chiếu</th>
+                                    <th>Hình thức chiếu</th>
+                                    <th>Hình thức dịch</th>
+                                    <th>Thời gian chiếu</th>
+                                    <th>Trạng thái</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-body">
+                                <tr>
+                                    <td>Phim 1</td>
+                                    <td>2D</td>
+                                    <td>Việt Sub</td>
+                                    <td>2021-10-10 10:00</td>
+                                    <td><span class="status">Đang chiếu</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Phần phân trang -->
+                        <div class="pagination mt-4 d-flex justify-content-center align-items-center">
+                            <nav>
+                                <ul class="pagination mb-0" id="pagination">
+                                    <li class="page-item">
+                                        <button class="page-link" onclick="previousPage()">&lt;</button>
+                                    </li>
+                                    <!-- Các số trang sẽ được tạo động -->
+                                    <li class="page-item">
+                                        <span class="page-link" id="pageInfo"></span>
+                                    </li>
+                                    <li class="page-item">
+                                        <button class="page-link" onclick="nextPage()">&gt;</button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </main>
+
+        </div>
+    </div>
+    <!-- JavaScript cơ bản cho phân trang -->
+    <script>
+        let currentPage = 1;
+        let rowsPerPage = 2;
+        let totalRows = 0;
+        let totalPages = 1;
+
+        // Dữ liệu mẫu (thay bằng dữ liệu thực tế của bạn)
+        const movieData = [
+            {
+                name: "Phim 1",
+                format: "2D",
+                translation: "Việt Sub",
+                time: "2021-10-10 10:00",
+                status: "Đang chiếu"
+            },
+            {
+                name: "Phim 2",
+                format: "2D",
+                translation: "Việt Sub",
+                time: "2021-10-10 10:00",
+                status: "Đang chiếu"
+            },
+            {
+                name: "Phim 3",
+                format: "2D",
+                translation: "Việt Sub",
+                time: "2021-10-10 10:00",
+                status: "Đang chiếu"
+            },
+            {
+                name: "Phim 4",
+                format: "2D",
+                translation: "Việt Sub",
+                time: "2021-10-10 10:00",
+                status: "Đang chiếu"
+            },
+            {
+                name: "Phim 1",
+                format: "2D",
+                translation: "Việt Sub",
+                time: "2021-10-10 10:00",
+                status: "Đang chiếu"
+            },
+            {
+                name: "Phim 1",
+                format: "2D",
+                translation: "Việt Sub",
+                time: "2021-10-10 10:00",
+                status: "Đang chiếu"
+            },
+            {
+                name: "Phim 1",
+                format: "2D",
+                translation: "Việt Sub",
+                time: "2021-10-10 10:00",
+                status: "Đang chiếu"
+            },
+            {
+                name: "Phim 1",
+                format: "2D",
+                translation: "Việt Sub",
+                time: "2021-10-10 10:00",
+                status: "Đang chiếu"
+            }
+            // Thêm các phim khác vào đây
+        ];
+
+    
+
+        function renderTable() {
+            const tbody = document.querySelector('.table-body');
+            tbody.innerHTML = '';
+            
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            const paginatedData = movieData.slice(start, end);
+
+            paginatedData.forEach(movie => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${movie.name}</td>
+                    <td>${movie.format}</td>
+                    <td>${movie.translation}</td>
+                    <td>${movie.time}</td>
+                    <td><span class="status">${movie.status}</span></td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            renderPagination();
+        }
+
+        function renderPagination() {
+            totalRows = movieData.length;
+            totalPages = Math.ceil(totalRows / rowsPerPage);
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+
+            // Nút "Trước"
+            const prevLi = document.createElement('li');
+            prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+            prevLi.innerHTML = `<button class="page-link" onclick="previousPage()"><</button>`;
+            pagination.appendChild(prevLi);
+
+            // Hiển thị các số trang
+            const maxVisiblePages = 5; // Số trang tối đa hiển thị (bao gồm dấu ...)
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+            if (endPage - startPage < maxVisiblePages - 1) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+
+            // Trang đầu tiên
+            if (startPage > 1) {
+                const firstLi = document.createElement('li');
+                firstLi.className = 'page-item';
+                firstLi.innerHTML = `<span class="page-link page-number" onclick="goToPage(1)">1</span>`;
+                pagination.appendChild(firstLi);
+
+                if (startPage > 2) {
+                    const ellipsis = document.createElement('li');
+                    ellipsis.className = 'page-item';
+                    ellipsis.innerHTML = '<span class="page-link ellipsis">...</span>';
+                    pagination.appendChild(ellipsis);
+                }
+            }
+
+            // Hiển thị các trang giữa
+            for (let i = startPage; i <= endPage; i++) {
+                const li = document.createElement('li');
+                li.className = `page-item `;
+                li.innerHTML = `<span class="page-link ${currentPage === i ? 'active' : ''} page-number" onclick="goToPage(${i})">${i}</span>`;
+                pagination.appendChild(li);
+            }
+
+            // Trang cuối cùng nếu cần
+            if (endPage < totalPages) {
+                if (endPage < totalPages - 1) {
+                    const ellipsis = document.createElement('li');
+                    ellipsis.className = 'page-item';
+                    ellipsis.innerHTML = '<span class="page-link ellipsis">...</span>';
+                    pagination.appendChild(ellipsis);
+                }
+
+                const lastLi = document.createElement('li');
+                lastLi.className = 'page-item';
+                lastLi.innerHTML = `<span class="page-link page-number" onclick="goToPage(${totalPages})">${totalPages}</span>`;
+                pagination.appendChild(lastLi);
+            }
+
+            // Nút "Sau"
+            const nextLi = document.createElement('li');
+            nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+            nextLi.innerHTML = `<button class="page-link" onclick="nextPage()">></button>`;
+            pagination.appendChild(nextLi);
+        }
+
+        function goToPage(page) {
+            currentPage = page;
+            renderTable();
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderTable();
+            }
+        }
+
+        function nextPage() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderTable();
+            }
+        }
+
+        function getAllMovies() {
+            currentPage = 1;
+            renderTable();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTable();
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+</body>
+
+</html>

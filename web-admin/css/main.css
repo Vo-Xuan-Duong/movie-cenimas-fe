@@ -1,0 +1,69 @@
+.seat {
+    width: 35px;
+    height: 35px;
+    margin: 3px;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Màu cho từng loại ghế */
+.seat-standard { background-color: #6a0dad; color: white; } /* Ghế thường */
+.seat-vip { background-color: #e63946; color: white; } /* Ghế VIP */
+.seat-couple { background-color: #d63384; color: white; } /* Ghế Couple */
+.seat-disabled { background-color: #333; color: white; cursor: not-allowed; } /* Không khả dụng */
+.seat-selected { background-color: #198754; color: white; } /* Ghế được chọn */
+
+/* Định dạng layout */
+.screen {
+    width: 100%;
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.legend div {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.legend div span {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.edit-button {
+    width: 35px;
+    height: 35px;
+    background-color: #28a745;
+    color: white;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+}
+
+.edit-button:hover {
+    background-color: #218838;
+}
