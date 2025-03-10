@@ -1,27 +1,51 @@
-
-
-
-.description-movie-header{
+.description-movie-header {
     background-size: cover;
     background-position: center;
     height: auto;
     color: white;
 }
 
-.description-movie-img{
+.description-movie-img {
     width: 280px;
     height: 400px;
     object-fit: cover;
 }
 
-.description-movie-header .movie-rating {
+.description-movie-header .movie-certification {
     background-color: rgba(0, 0, 0, 0.7);
     color: #ffffff;
     padding: 2px 5px;
     border-radius: 5px;
 }
 
-.description-movie-header .btn-trailer-review{
+.movie-item-certification{
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #ffffff;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+.movie-date {
+    background-color: #d8ffd8;
+    color: #27ae60;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    display: inline-block;
+    border: #1900f6 solid 1px;
+}
+
+#movie-duration{
+    background-color: #ffd8d8;
+    color: #27ae60;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    display: inline-block;
+    border: #f60000 solid 1px;
+}
+
+.description-movie-header .btn-trailer-review {
     display: inline-block;
     padding: 5px 10px;
     background: red;
@@ -34,7 +58,7 @@
     background: darkred;
 }
 
-.show-schedule{
+.show-schedule {
     padding: 8px 0;
     border-radius: 5px;
     border: 1px solid rgb(200, 200, 200);
@@ -49,11 +73,13 @@
     height: 68px;
 }
 
-.date-selector .show-list-date{
+.date-selector .show-list-date {
     display: flex;
     gap: 10px;
-    width: 100%; /* Chiếm toàn bộ vùng view */
-    overflow: hidden; /* Ẩn các phần tử thừa */
+    width: 100%;
+    /* Chiếm toàn bộ vùng view */
+    overflow: hidden;
+    /* Ẩn các phần tử thừa */
 }
 
 .date-selector .btn-date-selector-left {
@@ -79,7 +105,7 @@
     transform: translateX(30%);
     z-index: 1;
     border: 5px solid transparent;
-    
+
 }
 
 /* .date-selector .btn-date-selector-left:hover {
@@ -97,13 +123,13 @@
     flex-shrink: 0;
 }
 
-.date-selector .date-item span{
+.date-selector .date-item span {
     display: block;
     font-size: 12px;
     text-align: center;
 }
 
-.date-selector .date-item .day-big{
+.date-selector .date-item .day-big {
     font-size: 20px;
     font-weight: bold;
     padding: 6px;
@@ -112,7 +138,7 @@
     background-color: rgb(219, 219, 219);
 }
 
-.date-selector .date-item .day{
+.date-selector .date-item .day {
     padding: 3px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -133,24 +159,28 @@
 }
 
 
+.container__description_movie{
+    color: rgb(0, 0, 0);
+}
 
-
-.description-movie-main .list-movie .movie-item .movie-item-img{
+.description-movie-main .list-movie .movie-item .movie-item-img {
     height: 100px;
     border-radius: 5px;
     object-fit: cover;
 }
-.description-movie-main .list-movie .movie-item .movie-title{
+
+.description-movie-main .list-movie .movie-item .movie-title {
     margin: 0;
     font-size: 15px;
 }
-.description-movie-main .list-movie .movie-item .movie-genre{
+
+.description-movie-main .list-movie .movie-item .movie-genre {
     margin: 0;
     font-size: 12px;
 
 }
 
-.show-schedule hr{
+.show-schedule hr {
     margin: 5px 0;
 }
 
@@ -162,54 +192,54 @@
 }
 
 
-.theater-logo-item .theater-logo-border{
+.theater-logo-item .theater-logo-border {
     padding: 4px;
 }
 
-.theater-logo-item .theater-logo-border img{
+.theater-logo-item .theater-logo-border img {
     height: 40px;
     object-fit: cover;
 }
 
-.theater-logo-item .theater-logo-commemt{
+.theater-logo-item .theater-logo-commemt {
     text-align: center;
     font-size: 12px;
     width: 50px;
 }
 
-.theater-logo-item.active .theater-logo-border{
+.theater-logo-item.active .theater-logo-border {
     border: 1.5px solid rgb(224, 89, 152);
     border-radius: 9px;
 }
 
-.theater-logo-item.active .theater-logo-commemt{
+.theater-logo-item.active .theater-logo-commemt {
     color: rgb(214, 77, 150);
 }
 
-.list-theaters .theater-item-main-logo{
+.list-theaters .theater-item-main-logo {
     text-align: center;
     margin: 5px 0 0 15px;
 }
 
 
 
-.list-theaters .theater-item-main-logo img{
+.list-theaters .theater-item-main-logo img {
     width: 40px;
     height: 40px;
 }
 
-.list-theaters .theater-item-main-content{
-    
-}
+.list-theaters .theater-item-main-content {}
 
-.showtime{
+.showtime {
     margin: 15px;
 }
+
 .schedule {
     font-weight: bold;
     margin-bottom: 10px;
-  }
-  .time-slot {
+}
+
+.time-slot {
     display: inline-block;
     padding: 5px 9px;
     margin: 5px;
@@ -217,14 +247,16 @@
     border-radius: 8px;
     color: #1E90FF;
     cursor: pointer;
-  }
-  .time-slot:hover {
+}
+
+.time-slot:hover {
     background-color: #E0F7FF;
-  }
-  .highlight {
+}
+
+.highlight {
     font-weight: bold;
     color: #1E90FF;
-  }
+}
 
 
 .pagination-area {
@@ -320,3 +352,5 @@
     height: 20px;
     border-radius: 3px;
 }
+
+

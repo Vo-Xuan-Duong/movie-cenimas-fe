@@ -76,8 +76,7 @@
                                     <th>Mã khuyến mãi</th>
                                     <th>Giảm giá(%)</th>
                                     <th>Giảm giá(vnd)</th>
-                                    <th>Số lượng</th>
-                                    <th>Đã sử dụng</th>
+                                    <th>Số lượng còn lại</th>
                                     <th>Trạng thái</th>
                                     <th>Ngày tạo</th>
                                 </tr>
@@ -88,8 +87,7 @@
                                     <td>50</td>
                                     <td>50000</td>
                                     <td>100</td>
-                                    <td>50</td>
-                                    <td><span class="status">Đang hoạt động</span></td>
+                                    <td><span class="status">hoạt động</span></td>
                                     <td>2021-10-10</td>
                                     <td>
                                         <button class="btn btn-primary" data-bs-toggle="modal"
@@ -103,6 +101,23 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <!-- Phần phân trang -->
+                        <div class="pagination_display pagination mt-4 d-flex justify-content-center align-items-center">
+                            <nav>
+                                <ul class="pagination mb-0" id="pagination">
+                                    <li class="page-item">
+                                        <button class="page-link" onclick="previousPage()">&lt;</button>
+                                    </li>
+                                    <!-- Các số trang sẽ được tạo động -->
+                                    <li class="page-item">
+                                        <span class="page-link" id="pageInfo"></span>
+                                    </li>
+                                    <li class="page-item">
+                                        <button class="page-link" onclick="nextPage()">&gt;</button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </main>
@@ -116,19 +131,19 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
                         </div>
                         <div class="modal-body col-12 mx-auto">
-                            <form id="updateForm">
+                            
                                 <input type="hidden" id="serviceId" name="id" path="id" />
                                 <div class="mb-3 ">
                                     <label for="roomNameUpdate" class="form-label">Mã khuyến mãi</label>
-                                    <input type="text" class="form-control" id="createcodeDiscount" name="name" />
+                                    <input type="text" class="form-control" id="createCodeDiscount" name="name" />
                                 </div>
                                 <div class="mb-3 ">
                                     <label for="roomTypeUpdate" class="form-label">Giảm giá (%)</label>
-                                    <input type="text" class="form-control" id="creategg%" name="roomType" />
+                                    <input type="text" class="form-control" id="createDiscountRate" name="roomType" />
                                 </div>
                                 <div class="mb-3 ">
                                     <label for="roomTypeUpdate" class="form-label">Giảm giá (VND)</label>
-                                    <input type="text" class="form-control" id="createggVND" name="roomType" />
+                                    <input type="text" class="form-control" id="createDiscountAmount" name="roomType" />
                                 </div>
                                 <div class="mb-3 ">
                                     <label for="numberSeatUpdate" class="form-label">Số lượng</label>
@@ -137,17 +152,17 @@
                                 <div class="mb-3 ">
                                     <label for="numberSeatUpdate" class="form-label">Trạng thái</label>
                                     <select class="form-select" name="" id="createStatus">
-                                        <option value="1">Đang hoạt động</option>
-                                        <option value="2">Ngừng hoạt động</option>
+                                        <option value="DANGHOATDONG">Đang hoạt động</option>
+                                        <option value="NGUNGHOATDONG">Ngừng hoạt động</option>
                                     </select>
                                 </div>
 
 
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                    <button type="submit" class="btn btn-primary" onclick="createDiscount()">Lưu</button>
                                 </div>
-                            </form>
+                            
                         </div>
                     </div>
                 </div>
@@ -163,18 +178,18 @@
                         </div>
                         <div class="modal-body col-12 mx-auto">
                             <form id="updateForm">
-                                <input type="hidden" id="serviceId" name="id" path="id" />
+                                <input type="hidden" id="updateId" name="id" path="id" />
                                 <div class="mb-3 ">
                                     <label for="roomNameUpdate" class="form-label">Mã khuyến mãi</label>
-                                    <input type="text" class="form-control" id="updatecodeDiscount" name="name" />
+                                    <input type="text" class="form-control" id="updateCodeDiscount" name="name" />
                                 </div>
                                 <div class="mb-3 ">
                                     <label for="roomTypeUpdate" class="form-label">Giảm giá (%)</label>
-                                    <input type="text" class="form-control" id="updategg%" name="roomType" />
+                                    <input type="text" class="form-control" id="updateDiscountRate" name="roomType" />
                                 </div>
                                 <div class="mb-3 ">
                                     <label for="roomTypeUpdate" class="form-label">Giảm giá (VND)</label>
-                                    <input type="text" class="form-control" id="updateggVND" name="roomType" />
+                                    <input type="text" class="form-control" id="updateDiscountAmount" name="roomType" />
                                 </div>
                                 <div class="mb-3 ">
                                     <label for="numberSeatUpdate" class="form-label">Số lượng</label>
@@ -183,15 +198,14 @@
                                 <div class="mb-3 ">
                                     <label for="numberSeatUpdate" class="form-label">Trạng thái</label>
                                     <select class="form-select" name="" id="updateStatus">
-                                        <option value="1">Đang hoạt động</option>
-                                        <option value="2">Ngừng hoạt động</option>
+                                        <option value="DANGHOATDONG">Đang hoạt động</option>
+                                        <option value="NGUNGHOATDONG">Ngừng hoạt động</option>
                                     </select>
                                 </div>
 
-
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                    <button type="submit" class="btn btn-primary">Lưu</button>
+                                    <button type="submit" class="btn btn-primary" onclick="updateDiscount()" >Lưu</button>
                                 </div>
                             </form>
                         </div>
@@ -211,13 +225,13 @@
                         <div class="modal-body col-12 mx-auto">
                             <form id="deleteForm">
                                 <div class="mb-3 ">
-                                    <input type="text" hidden id="discountId" name="id" />
-                                    <p>Mã giảm giá : <span id="codeDiscount"> </span></p>
+                                    <input type="text" hidden id="deleteIdDiscount" name="id" />
+                                    <p>Mã giảm giá : <span id="deleteCodeDiscount"> </span></p>
                                     <p>Bạn có chắc chắn muốn xóa mã giảm giá này không?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-                                    <button type="submit" class="btn btn-primary">Xác nhận</button>
+                                    <button type="submit" class="btn btn-primary" onclick="deleteDiscount()" >Xác nhận</button>
                                 </div>
                             </form>
                         </div>
@@ -231,7 +245,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
-    <script src="js/movie.js"></script>
+    <script src="js/discount.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>

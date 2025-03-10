@@ -3,33 +3,40 @@ let rowsPerPage = 10;
 let totalRows = 0;
 let totalPages = 1;
 
-function getAllCinemas() {
-    axios.get(`http://localhost:8080/api/v1/cinemas/getAll?page=${currentPage}&size=${rowsPerPage}`)
+function getAllUsers() {
+    axios.get(`http://localhost:8080/api/v1/user/allUsers?page=${currentPage}&size=${rowsPerPage}`)
         .then(function (response) {
-            
             const data = response.data.data;
-            const cinemas = data.content; // Lấy danh sách rạp từ `data`
-            totalRows = data.totalElements || cinemas.length; // Tổng số rạp (tùy cấu trúc API)
-            totalPages = data.totalPages || Math.ceil(totalRows / rowsPerPage); // Tổng số trang
+            console.log('Dữ liệu user:', data);
+            const users = data.content; // Lấy danh sách phim từ content
+            totalRows = data.totalElements; // Tổng số phim
+            totalPages = data.totalPages; // Tổng số trang
 
-            let tableBody = document.querySelector('.table-body');
-            tableBody.innerHTML = ''; // Xóa dữ liệu cũ trước khi render mới
+            let table = document.querySelector('.table-body');
+            table.innerHTML = ""; // Xóa nội dung cũ trước khi cập nhật
 
-            cinemas.forEach(function (cinema) {
+            users.forEach(users => {
+                console.log("role : ", users.roles);
                 let row = `
                             <tr>
-                                <td><a style="text-decoration: none;" href="item-cinemas.html?cinema_id=${cinema.cinema_id}">${cinema.cinema_name}</a></td>
-                                <td>${cinema.cinema_address}</td>
-                                <td>${cinema.cinema_date}</td>
+                                <td><img src="${users.avatar}"
+                                            style="width: 100px; height: 100px; object-fit: cover;" alt=""></td>
+                                    <td><a style="text-decoration: none;" href="/web-admin/info-user.html?userId=${users.id}">${users.username}</a></td>
+                                    <td>${users.email}</td>
+                                    <td>${users.phone}</td>
+                                    <td><span class="date">${users.username}</span></td>
+                                    <td><span class="status">${users.username}</span></td>
+                                    <td>${users.created_at}</td>
                             </tr>
                         `;
-                tableBody.innerHTML += row;
+
+                table.innerHTML += row;
             });
 
             renderPagination();
         })
         .catch(function (error) {
-            console.error("Lỗi khi gọi API:", error);
+            console.log("Lỗi khi gọi API:", error);
             alert('Có lỗi xảy ra khi tải dữ liệu. Vui lòng thử lại.');
         });
 }
@@ -71,9 +78,9 @@ function renderPagination() {
     // Hiển thị các trang giữa
     for (let i = startPage; i <= endPage; i++) {
         const li = document.createElement('li');
-        li.className = `page-item ${currentPage === i ? 'active' : ''}`;
+        li.className = `page-item `;
         // Hiển thị số trang cho người dùng (i + 1), nhưng gửi i cho API
-        li.innerHTML = `<span class="page-link page-number" onclick="goToPage(${i})">${i + 1}</span>`;
+        li.innerHTML = `<span class="page-link ${currentPage === i ? 'active' : ''} page-number" onclick="goToPage(${i})">${i + 1}</span>`;
         pagination.appendChild(li);
     }
 
@@ -101,22 +108,22 @@ function renderPagination() {
 
 function goToPage(page) {
     currentPage = page; // Sử dụng page trực tiếp (bắt đầu từ 0)
-    getAllCinemas(); // Gọi lại API với trang mới
+    getAllUsers(); // Gọi lại API với trang mới
 }
 
 function previousPage() {
     if (currentPage > 0) { // Chỉ giảm nếu > 0
         currentPage--;
-        getAllCinemas(); // Gọi lại API với trang mới
+        getAllUsers(); // Gọi lại API với trang mới
     }
 }
 
 function nextPage() {
     if (currentPage < totalPages - 1) { // Chỉ tăng nếu chưa phải trang cuối (tính từ 0)
         currentPage++;
-        getAllCinemas(); // Gọi lại API với trang mới
+        getAllUsers(); // Gọi lại API với trang mới
     }
 }
 
 // Gọi hàm khi trang tải xong
-document.addEventListener("DOMContentLoaded", getAllCinemas);
+document.addEventListener("DOMContentLoaded", getAllUsers);

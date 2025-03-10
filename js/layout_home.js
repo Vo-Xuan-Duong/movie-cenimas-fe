@@ -1,12 +1,12 @@
 fetch('header.html')
     .then(response => response.text())
     .then(data => {
-        document.getElementById('header-placeholder').innerHTML = data;
+        document.getElementById('header').innerHTML = data;
     })
     .catch(error => console.error('Error loading header:', error));
-fetch('nav_menu.html')
+fetch('footer.html')
     .then(response => response.text())
     .then(data => {
-        document.getElementById('layoutSidenav_nav').innerHTML = data;
+        document.getElementById('footer').innerHTML = data;
     })
     .catch(error => console.error('Error loading header:', error));

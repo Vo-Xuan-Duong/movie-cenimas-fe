@@ -1,5 +1,5 @@
 let currentPage = 0; // Bắt đầu từ 0 vì API Spring Boot thường sử dụng index 0
-let rowsPerPage = 5;
+let rowsPerPage = 10;
 let totalRows = 0;
 let totalPages = 1;
 
@@ -7,7 +7,7 @@ function getAllMovies() {
     axios.get(`http://localhost:8080/api/v1/movie/allMovies?page=${currentPage}&size=${rowsPerPage}`)
         .then(function (response) {
             const data = response.data.data;
-            console.log('Dữ liệu phim:', data.data);
+            console.log('Dữ liệu phim:', data);
             const movies = data.content; // Lấy danh sách phim từ content
             totalRows = data.totalElements; // Tổng số phim
             totalPages = data.totalPages; // Tổng số trang
@@ -17,8 +17,8 @@ function getAllMovies() {
 
             movies.forEach(movie => {
                 // Kiểm tra nếu movie.genre có dữ liệu thì tạo danh sách thể loại, nếu không thì để trống
-                let tags = movie.genre ? movie.genre.map(tag => `<span class="tag">${tag}</span>`).join(" ") : "";
-
+                let tags = movie.genres ? movie.genres.map(tag => `<span class="tag">${tag.name}</span>`).join(" ") : "";
+                console.log("Tags:", movie.genres);
                 // Lấy năm phát hành từ releaseDate
                 let releaseYear = new Date(movie.releaseDate).getFullYear();
 
@@ -30,12 +30,11 @@ function getAllMovies() {
 
                 let row = `
                             <tr>
-                                <td><a style="text-decoration: none;" href="movie-detail.html?id=${movie.id}">${movie.title}</a></td> <!-- Thêm link tới chi tiết phim -->
+                                <td><a style="text-decoration: none;" href="item-movie.html?movieId=${movie.id}">${movie.title}</a></td> <!-- Thêm link tới chi tiết phim -->
                                 <td>${releaseYear}</td>
                                 <td class="tags">${tags}</td>
                                 <td><span class="date">${formattedDate}</span></td>
-                                <td><span class="status">Đang công chiếu</span></td>
-                                <td>${createdDate}</td>
+                                <td><span class="status">${movie.status}</span></td>
                             </tr>
                         `;
 
@@ -136,3 +135,4 @@ function nextPage() {
 
 // Gọi hàm khi trang tải xong
 document.addEventListener("DOMContentLoaded", getAllMovies);
+

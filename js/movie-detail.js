@@ -7,7 +7,7 @@ const movieId = getMovieIdFromUrl();
 console.log("Movie ID:", movieId);
 
 function getAllMovie() {
-    axios.get('http://localhost:8080/api/v1/movie/allMovies')
+    axios.get('http://localhost:8080/api/v1/movie/playing_now')
         .then(function (response) {
             console.log(response.data);
             let data = response.data.data; // Lấy danh sách phim
@@ -22,17 +22,17 @@ function getAllMovie() {
                         <div class="movie-item row">
                                 <div class="col-3">
                                     <a href="movie-detail.html?movie_id=${movie.id}">
-                                    <img src="${movie.posterUrl || 'default.jpg'}" alt="Poster của ${movie.title}" class="movie-item-img img-fluid" />
+                                    <img src="${movie.poster || 'default.jpg'}" alt="Poster của ${movie.title}" class="movie-item-img img-fluid" />
                                 </a>
                                 </div>
                                 <div class="col-9">
-                                    <span class="movie-item-age-rating">${movie.rating}</span>
+                                    <span class="movie-item-certification">${movie.certification}</span>
                                     <p class="movie-title"><b>${movie.title}</b>
                                     </p>
-                                    <p class="movie-genre">${movie.genre ? movie.genre.join(', ') : 'Không xác định'}</p>
+                                    <p class="movie-genre">${movie.genres ? movie.genres.map(genre => genre.name).join(', ') : 'Không xác định'}</p>
                                     <div class="movie-rating">
                                         <span>⭐</span>
-                                        <span>${movie.rating}</span>
+                                        <span>${movie.vote_average}</span>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +66,7 @@ function getMovieDetail() {
             let data = response.data?.data || response.data; // Lấy thông tin phim
 
             // Lấy phần tử DOM
-            let rating = document.querySelector('.movie-rating');
+            let rating = document.querySelector('.movie-certification');
             let title = document.querySelector('.movie-title');
             let title_1 = document.querySelector('.movie-title-1');
             let poster = document.querySelector('.description-movie-img');
@@ -75,14 +75,35 @@ function getMovieDetail() {
             let description = document.querySelector('.description-movie-content');
             let duration = document.querySelector('.movie-duration');
             let releaseDate = document.querySelector('.movie-release-date');
+            const movieHeader = document.querySelector('.description-movie-header');
+
+            // Change the background image
+
 
             if (data) {
-                rating.innerHTML = data.rating || "Chưa có đánh giá";
+                const overlay = document.createElement('div');
+                overlay.style.position = 'absolute';
+                overlay.style.top = '0';
+                overlay.style.left = '0';
+                overlay.style.width = '100%';
+                overlay.style.height = '100%';
+                overlay.style.backgroundImage = `url('${data.backdrop || 'default.jpg'}')`;
+                overlay.style.backgroundSize = 'cover';
+                overlay.style.backgroundPosition = 'center';
+                overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.87)'; // Darken with black color and transparency
+                overlay.style.opacity = '0.4'
+                overlay.style.zIndex = '-1'; // Ensure the overlay is behind the content
+
+                // Append the overlay to the movieHeader
+                movieHeader.style.position = 'relative'; // Ensure the movieHeader is positioned correctly
+                movieHeader.appendChild(overlay);
+                rating.innerHTML = data.certification || "Chưa có đánh giá";
                 title.innerHTML = data.title || "Không có tiêu đề";
                 title_1.innerHTML = data.title || "Không có tiêu đề";
-                poster.src = data.posterUrl || 'default.jpg';
-                genre.innerHTML = data.genre ? data.genre.join(', ') : 'Không xác định';
-                trailer.href = data.trailerUrl || "#";
+                poster.src = data.poster || 'default.jpg';
+                genre.innerHTML = data.genres ? data.genres.map(genre => genre.name).join(', ') : 'Không xác định';
+                trailer.setAttribute('data-trailer-id', data.trailer || ''); // Lưu URL trailer
+                // trailer.setAttribute('data-movie-title', data.title || 'Không có tiêu đề');
                 description.innerHTML = data.description || "Không có mô tả";
                 duration.innerHTML = data.duration || "Không rõ thời lượng";
                 releaseDate.innerHTML = data.releaseDate || "Không có ngày phát hành";
@@ -257,7 +278,7 @@ function showSeatForShowtime(encodedShowtime) {
         .catch(function (error) {
             console.error("Lỗi khi lấy danh sách ghế:", error);
         });
-}
+};
 
 
 
@@ -411,4 +432,36 @@ function payment() {
 
 }
 
+document.addEventListener("DOMContentLoaded", function () {
 
+    // Khởi tạo modal
+    const trailerModal = document.getElementById('trailerModal');
+    const trailerVideo = document.getElementById('trailerVideo');
+    const modal = new bootstrap.Modal(trailerModal);
+
+    // Khi modal mở, xử lý URL trailer và nhúng video
+    trailerModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget; // Nút "Xem trailer" đã được nhấn
+        let trailerUrl = button.getAttribute('data-trailer-id'); // Lấy toàn bộ URL trailer
+        const movieTitle = button.closest('.container__description_movie').querySelector('.movie-title').textContent;
+
+        console.log("URL trailer:", trailerUrl);
+        console.log("Tiêu đề phim:", movieTitle);
+
+        // Kiểm tra nếu URL là YouTube, chuyển thành URL embed
+        let embedUrl = trailerUrl;
+        
+
+        // Đặt URL vào iframe
+        trailerVideo.setAttribute('src', embedUrl);
+        trailerModal.querySelector('.modal-title').textContent = `Trailer: ${movieTitle}`;
+    });
+
+    // Khi modal đóng, dừng video
+    trailerModal.addEventListener('hidden.bs.modal', function () {
+        trailerVideo.setAttribute('src', ''); // Xóa src để dừng video
+    });
+
+
+
+});

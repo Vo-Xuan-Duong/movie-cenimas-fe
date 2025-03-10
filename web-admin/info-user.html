@@ -36,30 +36,29 @@
                             <button class="btn btn-primary">Lịch sử đặt vé</button>
                             </div>
                             <div>
-                                <button class="btn btn-primary" onclick="createMovie()">update user</button>
+                                <button class="btn btn-primary" onclick="updateUser()">update user</button>
                             </div>
                         </div>
                         <div class="card-body">
                             <div class="row g-4">
                                 <div class="col-md-8">
                                     <div class="mb-3">
-                                        <label for="movieTitle" class="form-label fw-bold">Họ và tên</label>
-                                        <input type="text" class="form-control" id="movieTitle" placeholder="Nhập tên phim">
+                                        <label for="userName" class="form-label fw-bold">Họ và tên</label>
+                                        <input type="text" class="form-control" id="userName" placeholder="Nhập tên phim">
                                     </div>
                             
                                     <div class="mb-3">
-                                        <label for="movieDirector" class="form-label fw-bold">Email</label>
-                                        <input type="text" class="form-control" id="movieDirector" placeholder="Nhập tên đạo diễn">
+                                        <label for="userEmail" class="form-label fw-bold">Email</label>
+                                        <input type="text" class="form-control" id="userEmail" placeholder="Nhập Email">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="movieActors" class="form-label fw-bold">Số điện thoại</label>
-                                        <input type="text" class="form-control" id="movieActors" placeholder="Nhập tên diễn viên">
+                                        <label for="userPhone" class="form-label fw-bold">Số điện thoại</label>
+                                        <input type="text" class="form-control" id="userPhone" placeholder="Nhập Số điện thoại">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="moviePoster" class="form-label fw-bold">Quyền</label>
-                                        <select class="form-select" name="" id="">
-                                            <option value="1">Admin</option>
-                                            <option value="2">User</option>
+                                        <label for="select-role" class="form-label fw-bold">Quyền</label>
+                                        <select class="form-select" name="" id="select-role">
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -83,7 +82,7 @@
         crossorigin="anonymous"></script>
     <script src="js/scripts.js"></script>
     <script src="js/main.js" ></script>
-   <script src="js/item-cinemas.js"></script>
+   <script src="js/item-user.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
