@@ -126,6 +126,30 @@ function addData() {
         });
 }
 
+function addGenre() {
+    axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=584fe34ce59d833e0df3c6131ceb5b4a&language=vi-VN`)
+        .then(function (response) {
+            let data = response.data.genres;
+            console.log("Dữ liệu lấy từ trang web:", data);
+
+            data.forEach(genre => {
+                axios.post(`http://localhost:8080/api/v1/updatedata/genre/create`, {
+                    name: genre.name,
+                    id: genre.id
+                })
+                .then(function (postResponse) {
+                    console.log("Thêm thể loại thành công:", postResponse.data);
+                })
+                .catch(function (error) {
+                    console.log("Lỗi khi thêm thể loại:", error);
+                });
+            });
+        })
+        .catch(function (error) {
+            console.log("Lỗi khi lấy danh sách thể loại:", error);
+        });
+}
+
 // Hàm chuyển đổi phân loại từ Mỹ sang Việt Nam
 function convertCertificationToVietnam(usCertification) {
     if (!usCertification) return "P";

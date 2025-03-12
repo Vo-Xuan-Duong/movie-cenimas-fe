@@ -300,6 +300,18 @@
     font-size: 12px;
 }
 
+.seat_couple {
+    width: 80px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    color: white;
+    font-size: 12px;
+}
+
 .seat-available {
     background-color: #6f42c1;
 }
@@ -319,6 +331,7 @@
 
 .seat-selected {
     background-color: #ff66b2;
+    border: 2px solid #28a745;
 }
 
 .seat-center {

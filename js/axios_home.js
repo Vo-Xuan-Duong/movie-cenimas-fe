@@ -22,7 +22,7 @@ function getAllMovies() {
 
                     html += `
                         <div class="movie-card">
-                            <span class="movie-rating">${movie.rating}</span>
+                            <span class="movie-rating">${movie.certification}</span>
                             <div class="movie-poster-img">
                                 <a href="movie-detail.html?movie_id=${movie.id}">
                                     <img src="${movie.poster || 'default.jpg'}" alt="Poster của ${movie.title}" />
@@ -154,7 +154,7 @@ function getAllMovieUpComing() {
 
                     html += `
                         <div class="movie-card">
-                            <span class="movie-rating">${movie.rating}</span>
+                            <span class="movie-rating">${movie.certification}</span>
                             <div class="movie-poster-img">
                                 <a href="movie-detail.html?movie_id=${movie.id}">
                                     <img src="${movie.poster || 'default.jpg'}" alt="Poster của ${movie.title}" />
@@ -201,7 +201,7 @@ function getAllMovieNowPlay() {
 
                     html += `
                         <div class="movie-card">
-                            <span class="movie-rating">${movie.rating}</span>
+                            <span class="movie-rating">${movie.certification}</span>
                             <div class="movie-poster-img">
                                 <a href="movie-detail.html?movie_id=${movie.id}">
                                     <img src="${movie.poster || 'default.jpg'}" alt="Poster của ${movie.title}" />

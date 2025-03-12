@@ -39,6 +39,7 @@
                         <div class="card-body">
                             <div class="row g-4">
                                 <div class="col-md-8">
+                                    <input type="text" id="movie-id" hidden>
                                     <div class="mb-3">
                                         <label for="movieTitle" class="form-label fw-bold">Tên phim</label>
                                         <input type="text" class="form-control" id="movie-title"
@@ -54,7 +55,8 @@
                                         <label for="movieGenre" class="form-label fw-bold">Thể loại </label>
                                         <div id="movie-genre" class="d-flex flex-wrap g-4">
                                             <!-- Các thể loại phim -->
-                                            <button class="tag">+</button>
+                                            <button class="tag" data-bs-toggle="modal"
+                                            data-bs-target="#createGenreModal">+</button>
                                         </div>
                                     </div>
                                     <div class="mb-3">
@@ -81,12 +83,13 @@
                                         <br>
                                         <label for="">Poster</label>
                                         <input type="text" class="form-control mb-2" id="movie-poster"
-                                            placeholder="Nhập URL poster phim"><label for="">Backdrop</label>
+                                            placeholder="Nhập URL poster phim">
+                                        <label for="">Backdrop</label>
                                         <input type="text" class="form-control" id="movie-backdrop"
                                             placeholder="Nhập URL trailer phim">
                                         <div class="d-flex flex-wrap g-4 mt-3" >
                                             <img id="posterPreview" src="" frameborder="0" style="width: 280px;height: 400px; display: none;"></img>
-                                        <img id="backdropPreview" src="" frameborder="0" style="width: 480px;height: 400px; display: none;"></img>
+                                            <img id="backdropPreview" src="" frameborder="0" style="width: 480px;height: 400px; display: none;"></img>
                                         </div>
                                     </div>
                                     
@@ -94,18 +97,31 @@
                                 <div class="col-md-4">
                                     <div class="mb-3">
                                         <label for="movieFormat" class="form-label fw-bold">Hình thức chiếu</label>
-                                        <input class="form-control" id="movie-layout" placeholder="Nhập hình thức chiếu">
-                                            
+                                        <select class="form-select" id="movie-type">
+                                            <option value="null">Trống</option>
+                                            <option value="2D">2D</option>
+                                            <option value="3D">3D</option>
+                                            <option value="4D">4D</option>
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="movieTranslation" class="form-label fw-bold">Hình thức dịch</label>
-                                        <input class="form-control" id="movie-translation" placeholder="Nhập hình thức dịch">
-                                            
+                                        <select class="form-select" id="movie-support">
+                                            <option value="null">Trống</option>
+                                            <option value="PHUDE">Phụ đề</option>
+                                            <option value="LONGTIENG">Lồng tiếng</option>
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="movieAgeRating" class="form-label fw-bold">Độ tuổi xem phim</label>
-                                        <input class="form-control" id="movie-age" placeholder="Nhập độ tuổi">
                                         
+                                        <select class="form-select" id="movie-age">
+                                            <option value="null">Trống</option>
+                                            <option value="P">P</option>
+                                            <option value="C13">C13</option>
+                                            <option value="C16">C16</option>
+                                            <option value="C18">C18</option>
+                                        </select>
                                     </div>
                                     <div class="mb-3">
                                         <label for="movieReleaseDate" class="form-label fw-bold">Ngày bắt đầu
@@ -132,6 +148,7 @@
                                     <div class="mb-3">
                                         <label for="movieStatus" class="form-label fw-bold">Trạng thái</label>
                                         <select class="form-select" id="movie-status">
+                                            <option value="null">Trống</option>
                                             <option value="DANGCHIEU">Đang chiếu</option>
                                             <option value="SAPCHIEU">Sắp chiếu</option>
                                             <option value="NGUNGCHIEU">Ngừng chiếu</option>
@@ -141,6 +158,7 @@
                                     <div class="mb-3">
                                         <label for="movieCountry" class="form-label fw-bold">Quốc gia</label>
                                         <select class="form-select" id="movie-country">
+                                            <option value="null">Trống</option>
                                             <option value="VN">Việt Nam</option>
                                             <option value="US">Mỹ</option>
                                             <option value="GB">United Kingdom</option>
@@ -154,7 +172,35 @@
                         </div>
                     </div>
             </main>
+            <!-- modal tạo mới thể loại -->
+            <div class="modal fade" id="createGenreModal" tabindex="-1" aria-labelledby="serviceModalLabel"
+                aria-hidden="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="serviceModalLabel">Thêm thể loại</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                        </div>
+                        <div class="modal-body col-12 mx-auto">
+                            
+                                <div class="modal-body">
+                                    <div class="mb-3">
+                                        <label for="genreName" class="form-label">Tên thể loại</label>
+                                        <select name="" id="genre-list" class="form-select">
 
+                                        </select>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" onclick="updateGenre()" >Xác nhận</button>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

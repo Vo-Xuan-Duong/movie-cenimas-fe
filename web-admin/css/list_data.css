@@ -13,6 +13,45 @@
     border: #545454 solid 1px;
 }
 
+.tag_genre {
+    position: relative; /* Giữ nguyên để chứa nút X */
+    background-color: #e0e7ff;
+    color: #333;
+    padding: 5px 10px 5px 10px; /* Chừa khoảng trống bên phải cho nút X */
+    border-radius: 10px;
+    font-size: 14px;
+    border: #545454 solid 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Nút X */
+.close-button {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* Hiệu ứng hover */
+.close-button:hover {
+    background-color: darkred;
+}
+
+
 .showTime_Time{
     background-color: #cdd8fe;
     color: #0022ff;
@@ -149,4 +188,91 @@
 .pagination .ellipsis {
     padding: 8px 12px;
     color: #333;
+}
+
+
+.seat {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    color: white;
+    font-size: 12px;
+}
+
+.seat:hover {
+    border: 2px solid #28a745;
+}
+
+.seat-created {
+    background-color: #00ff1a;
+    border: none;
+}
+
+.seat_couple {
+    width: 80px;
+    height: 40px;
+    margin: 5px;
+    border-radius: 5px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    color: white;
+    font-size: 12px;
+}
+
+.seat-available {
+    background-color: #6f42c1;
+}
+
+.seat-vip {
+    background-color: #dc3545;
+}
+
+.seat-couple {
+    background-color: #e83e8c;
+}
+
+.seat-booked {
+    background-color: #343a40;
+    cursor: not-allowed;
+}
+
+.seat-selected {
+    background-color: #ff66b2;
+}
+
+.seat-center {
+    border: 2px solid #28a745;
+}
+
+.screen {
+    background-color: #fff;
+    color: #000;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
 }

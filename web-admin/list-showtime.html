@@ -66,7 +66,8 @@
                     <div class="card shadow-sm p-4 bg-white rounded">
                         <div class="card-header mb-4 d-flex justify-content-between align-items-center">
                             <div>
-                                <a href="create-movie.html" class="btn btn-primary">Tạo suất chiếu</a>
+                                <button href="create-showtime.html" data-bs-toggle="modal"
+                                data-bs-target="#createShowtimeModal" class="btn btn-primary">Tạo suất chiếu</button>
                                 <button class="btn btn-primary" onclick="getAllMovies()">Refresh</button>
                             </div>
                             <div>
@@ -113,6 +114,135 @@
                     </div>
                 </div>
             </main>
+
+            <!-- tạo showtime -->
+            <div class="modal fade" id="createShowtimeModal" tabindex="-1" aria-labelledby="serviceModalLabel"
+                aria-hidden="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="serviceModalLabel">Tạo Suất chiếu</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                        </div>
+                        <div class="modal-body col-12 mx-auto">
+                            
+                                <input type="hidden" id="serviceId" name="id" path="id" />
+                                <div class="mb-3 ">
+                                    <label for="roomName" class="form-label">Rạp phim</label>
+                                    <select class="form-select" name="" id="movieId">
+                                        <option value="1">Phim 1</option>
+                                        <option value="2">Phim 2</option>
+                                        <option value="3">Phim 3</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 ">
+                                    <label for="roomName" class="form-label">Phòng chiếu</label>
+                                    <select class="form-select" name="" id="movieId">
+                                        <option value="1">Phim 1</option>
+                                        <option value="2">Phim 2</option>
+                                        <option value="3">Phim 3</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 ">
+                                    <label for="roomName" class="form-label">Ngày chiếu</label>
+                                    <input type="date" class="form-control" id="movieId" name="name" />
+                                </div>
+                                <div class="mb-3 ">
+                                    <label for="roomName" class="form-label">Phim chiếu</label>
+                                    <select class="form-select" name="" id="movieId">
+                                        <option value="1">Phim 1</option>
+                                        <option value="2">Phim 2</option>
+                                        <option value="3">Phim 3</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3 ">
+                                    <label for="roomName" class="form-label">Giờ chiếu</label>
+                                    <input class="form-control" type="time" name="" id="">
+                                </div>
+                                
+
+
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                    <button type="submit" class="btn btn-primary" onclick="createDiscount()">Lưu</button>
+                                </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- chỉnh sửa discount -->
+            <div class="modal fade" id="updateDiscountModal" tabindex="-1" aria-labelledby="serviceModalLabel"
+                aria-hidden="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="serviceModalLabel">Chỉnh sửa khuyến mãi</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                        </div>
+                        <div class="modal-body col-12 mx-auto">
+                            <form id="updateForm">
+                                <input type="hidden" id="updateId" name="id" path="id" />
+                                <div class="mb-3 ">
+                                    <label for="roomNameUpdate" class="form-label">Mã khuyến mãi</label>
+                                    <input type="text" class="form-control" id="updateCodeDiscount" name="name" />
+                                </div>
+                                <div class="mb-3 ">
+                                    <label for="roomTypeUpdate" class="form-label">Giảm giá (%)</label>
+                                    <input type="text" class="form-control" id="updateDiscountRate" name="roomType" />
+                                </div>
+                                <div class="mb-3 ">
+                                    <label for="roomTypeUpdate" class="form-label">Giảm giá (VND)</label>
+                                    <input type="text" class="form-control" id="updateDiscountAmount" name="roomType" />
+                                </div>
+                                <div class="mb-3 ">
+                                    <label for="numberSeatUpdate" class="form-label">Số lượng</label>
+                                    <input type="text" class="form-control" id="updatequantity" name="numberSeat" />
+                                </div>
+                                <div class="mb-3 ">
+                                    <label for="numberSeatUpdate" class="form-label">Trạng thái</label>
+                                    <select class="form-select" name="" id="updateStatus">
+                                        <option value="DANGHOATDONG">Đang hoạt động</option>
+                                        <option value="NGUNGHOATDONG">Ngừng hoạt động</option>
+                                    </select>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                    <button type="submit" class="btn btn-primary" onclick="updateDiscount()" >Lưu</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- modal xóa discount -->
+            <div class="modal fade" id="deleteDiscountModal" tabindex="-1" aria-labelledby="serviceModalLabel"
+                aria-hidden="false">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="serviceModalLabel">Xác nhận mã giảm giá</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                        </div>
+                        <div class="modal-body col-12 mx-auto">
+                            <form id="deleteForm">
+                                <div class="mb-3 ">
+                                    <input type="text" hidden id="deleteIdDiscount" name="id" />
+                                    <p>Mã giảm giá : <span id="deleteCodeDiscount"> </span></p>
+                                    <p>Bạn có chắc chắn muốn xóa mã giảm giá này không?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                                    <button type="submit" class="btn btn-primary" onclick="deleteDiscount()" >Xác nhận</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>

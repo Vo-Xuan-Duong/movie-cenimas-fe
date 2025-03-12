@@ -135,6 +135,7 @@ function showListTheater(movieId) {
                     console.log("Số lượng suất chiếu:", theater.showTime ? theater.showTime.length : 0);
 
                     if (theater.showTime && theater.showTime.length > 0) {
+                        showtimesHtml += ``
                         showtimesHtml = theater.showTime.map(showtime => {
                             let showtimeData = encodeURIComponent(JSON.stringify(showtime)); // Encode dữ liệu
                             return `
@@ -164,7 +165,7 @@ function showListTheater(movieId) {
                                 </div>
                             </div>
                             <div class="showtime">
-                                <div class="schedule">2D Phụ đề</div>
+                                <div class="schedule">${theater.showTime[0].room.type.replace("TYPE_", "")} ${checkSupport(theater.showTime[0].movie.support)}</div>
                                 ${showtimesHtml}
                             </div>
                         </div>
@@ -215,13 +216,13 @@ function showSeatForShowtime(encodedShowtime) {
                     let seatPrice = showTime.price; // Giá mặc định
 
                     if (seat.seatStatus === 'OCCUPIED') {
-                        seatClass = 'seat-booked';
+                        seatClass = 'seat seat-booked';
                     } else {
                         if (seat.seatType === 'VIP') {
                             seatClass = 'seat-vip';
                             seatPrice += 50000; // Cộng thêm 50K
                         } else if (seat.seatType === 'COUPLE') {
-                            seatClass = 'seat-couple';
+                            seatClass = 'seat_couple seat-couple';
                             seatPrice += 100000; // Cộng thêm 100K
                         }
                     }
@@ -261,13 +262,11 @@ function showSeatForShowtime(encodedShowtime) {
             });
 
             //xử lí tên phim
-            document.querySelector('.text-center').innerHTML = `${showTime.movieName} - ${showTime.start_time} ~ ${showTime.end_time} - ${showTime.show_date} - ${showTime.room.name} - ${showTime.room.format}`
+            document.querySelector('.text-center').innerHTML = `${showTime.movie.title} - ${showTime.start_time} ~ ${showTime.end_time} - ${showTime.show_date} - ${showTime.room.name} - ${showTime.room.type.replace("TYPE_", "")} ${checkSupport(showTime.movie.support)}`
 
             // Xử lý mua vé
             $('#buy-ticket').off('click').on('click', function () {
                 if (selectedSeats.length > 0) {
-                    // alert('Bạn đã mua vé cho các ghế: ' + selectedSeats.map(s => s.id).join(', ') +
-                    //       '\nTổng cộng: ' + totalPrice.toLocaleString('vi-VN') + 'đ');
                     showDetailTicket(encodedShowtime, selectedSeats, totalPrice);
                 } else {
                     alert('Vui lòng chọn ghế trước khi mua vé.');
@@ -280,7 +279,15 @@ function showSeatForShowtime(encodedShowtime) {
         });
 };
 
-
+function checkSupport(support) {
+    if(support == "PHUDE") {
+        return "Phụ đề";
+    } else if (support == "SUB") {
+        return "Phụ đề";
+    } else if (support == "LONGTIENG") {
+        return "Lồng tiếng"
+    }
+}
 
 //Xử lí phần chọn phương thức thanh toán
 
@@ -305,6 +312,8 @@ document.querySelectorAll('.dropdown-item').forEach(item => {
 function showDetailTicket(encodedShowtime, selectedSeats, totalPrice) {
 
     let showTime = JSON.parse(decodeURIComponent(encodedShowtime));
+    var bookingModal = new bootstrap.Modal(document.getElementById('booking'));
+    bookingModal.show();
 
     document.getElementById('showtime_id').value = showTime.id;
     let movie_name = document.querySelector('.name-movie');
@@ -332,28 +341,26 @@ function showDetailTicket(encodedShowtime, selectedSeats, totalPrice) {
     document.querySelector('.price-tt').innerHTML = totalPrice.toLocaleString('vi-VN') + 'đ';
     document.querySelector('.total-price').innerHTML = totalPrice.toLocaleString('vi-VN') + 'đ';
 
-    var bookingModal = new bootstrap.Modal(document.getElementById('booking'), {
-
-        focus: false
-    });
-
-    bookingModal.show();
+    
 
 }
 
 function resetDiscount() {
     // Lấy instance đã tồn tại thay vì tạo mới
     var bookingModal = bootstrap.Modal.getInstance(document.getElementById('booking'));
-
+    
     if (bookingModal) {
         bookingModal.hide(); // Đóng modal nếu đã tồn tại
     }
-
-    // Xóa giá trị input
-    document.getElementById('discount').value = '';
-
-    document.getElementById('openModalButton').focus();
 }
+document.getElementById("closeModalBooking").addEventListener("click", function () {
+    let seatInfoModalElement = document.getElementById('booking');
+    let seatInfoModalInstance = bootstrap.Modal.getInstance(seatInfoModalElement);
+    if (seatInfoModalInstance) {
+        seatInfoModalInstance.hide();
+        document.getElementById('discount').value = '';
+    }
+});
 
 
 function checkDiscount() {
@@ -367,19 +374,21 @@ function checkDiscount() {
         .then(function (response) {
             console.log("Kiểm tra mã giảm giá:", response.data.data);
 
-            let percent = response.data.data.discountAmount;
+            let discount = response.data.data;
 
-            let discountAmount = 0;
+            let totalPrice = 0;
 
-            // Áp dụng giảm giá
-            if (discountCode === 'FREESHIP') {
-                discountAmount = 15000; // Giảm 15,000đ
-            } else {
-                discountAmount = originalPrice * percent / 100; // Giảm theo %
+            if (discount.quantity > 0) {
+                if (discount.discountAmount == 0) {
+                    totalPrice = originalPrice - discount.discountRate * originalPrice / 100;
+                }
+                else {
+                    totalPrice = originalPrice - discount.discountAmount;
+                }
             }
 
             // Tính tổng tiền sau giảm giá
-            let totalPrice = originalPrice - discountAmount;
+            
             totalPrice = totalPrice > 0 ? totalPrice : 0; // Đảm bảo không âm
 
             // Cập nhật giao diện
